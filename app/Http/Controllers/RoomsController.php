@@ -111,7 +111,8 @@ class RoomsController extends Controller
         break;
     }
 
-    return view('rooms.page')->with('title', $title)->with('imageUrl', $imageUrl);
+    return view('rooms.page')->with('title', $title)->with('imageUrl', $imageUrl)->with('pageName', $pageName);
+
   }
 
 }

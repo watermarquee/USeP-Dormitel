@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class='col-md-4'>
+            <div class='col-md-3'>
                 <button type="submit" class="btn btn-large btn-block btn-default">Check Availability<span
                             class="glyphicon glyphicon-eye-open" style="margin-left: 10px"></span>
                 </button>

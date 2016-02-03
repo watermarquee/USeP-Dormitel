@@ -33,6 +33,9 @@ Route::get('admin/dashboard', 'AdminController@index');
 Route::get('rooms', 'RoomsController@index');
 Route::get('rooms/page/{pageName}', 'RoomsController@page');
 
+Route::get('tosend/{pageName}', 'MasterController@tosend');
+Route::get('tosendtwo', 'MasterController@tosend_two');
+
 Route::controllers([
   'auth'     => 'Auth\AuthController',
   'password' => 'Auth\PasswordController',

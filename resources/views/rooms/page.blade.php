@@ -45,7 +45,7 @@
                     Capacity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 Humans
                 </p>
 				<div align="center">
-                    <button type="button" class="button">Make Reservation</button>
+                    <a href="/tosend/{{$pageName}}" class="btn btn-warning">Make Reservation</a>
                 </div>
 				</span>
             </div>

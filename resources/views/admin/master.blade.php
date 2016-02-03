@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>Administrative Dashboard</title>
 
     <!-- Bootstrap Core CSS -->
     <!-- Latest compiled and minified CSS & JS -->
@@ -34,7 +34,7 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <a href="#">
+                <a href="/">
                     <img src="/images/logo.png" alt="image" style='width:30px;height:30px'>
                     USeP Dormitel Admin
                 </a>

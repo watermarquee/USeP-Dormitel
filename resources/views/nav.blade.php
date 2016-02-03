@@ -3,6 +3,7 @@
     .nav {
         padding: 25px 220px;
         background-color: black;
+        position: relative;
     }
 
     .menu {
