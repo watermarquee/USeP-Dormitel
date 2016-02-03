@@ -11,9 +11,13 @@
             object-fit: cover;
         }
 
+        .rooms-table tr {
+            cursor: pointer;
+        }
+
     </style>
     <div class="contentment">
-        <table class="table table-hover">
+        <table class="table table-hover rooms-table">
             <tbody>
             <tr onclick="document.location = '/rooms/page/{{\App\Room::TYPE_AFFORDABLE}}';">
                 <th scope="row"></th>

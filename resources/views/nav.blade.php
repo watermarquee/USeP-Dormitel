@@ -49,28 +49,3 @@
         @endif
     </ul>
 </nav>
-@yield('content')
-<script src="//code.jquery.com/jquery.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-
-        var $sidebar = $("#nav"),
-                $window = $(window),
-                offset = $sidebar.offset(),
-                topPadding = 15;
-
-        $window.scroll(function () {
-            if ($window.scrollTop() > offset.top) {
-                $sidebar.stop().animate({
-                    marginTop: $window.scrollTop() - offset.top + topPadding
-                });
-            } else {
-                $sidebar.stop().animate({
-                    marginTop: 0
-                });
-            }
-        });
-
-    });
