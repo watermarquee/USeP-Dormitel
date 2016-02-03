@@ -16,21 +16,24 @@
 |Route::get('home', 'HomeController@index');
 */
 
-Route::get('/', 'MasterController@index');
+/**
+ * Home routes
+ */
+Route::get('/', 'HomeController@index');
+Route::get('home', 'HomeController@index');
 
-Route::get('home', 'MasterController@index');
+/**
+ * Admin routes
+ */
+Route::get('admin/dashboard', 'AdminController@index');
 
-Route::get('rooms', 'MasterController@rooms');
-
-Route::get('quarter', 'MasterController@affordable');
-
-Route::get('middlequarter', 'MasterController@middleclass');
-
-Route::get('vip', 'MasterController@vip');
-
-Route::get('dashboard', 'MasterController@dashboard');
+/**
+ * Room routes
+ */
+Route::get('rooms', 'RoomsController@index');
+Route::get('rooms/page/{pageName}', 'RoomsController@page');
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+  'auth'     => 'Auth\AuthController',
+  'password' => 'Auth\PasswordController',
 ]);
