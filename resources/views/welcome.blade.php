@@ -5,20 +5,20 @@
         <h1>USeP Dormitel Rooms</h1>
         <hr>
         <div class="container">
-            <div class='col-md-2'>
+            <div class='col-md-3'>
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker6'>
-                        <input type='text' class="form-control" placeholder="Start Date"/>
+                        <input type='date' class="form-control" placeholder="Start Date"/>
 		                <span class="input-group-addon">
 		                    <span class="glyphicon glyphicon-calendar"></span>
 		                </span>
                     </div>
                 </div>
             </div>
-            <div class='col-md-2'>
+            <div class='col-md-3'>
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker7'>
-                        <input type='text' class="form-control" placeholder="End Date"/>
+                        <input type='date' class="form-control" placeholder="End Date"/>
 		                <span class="input-group-addon">
 		                    <span class="glyphicon glyphicon-calendar"></span>
 		                </span>
