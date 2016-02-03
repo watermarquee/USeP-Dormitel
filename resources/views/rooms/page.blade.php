@@ -4,7 +4,6 @@
     <style>
 
         img {
-
             margin-top: 10;
             width: 500px;
             height: 350px;
@@ -13,14 +12,21 @@
         .caption {
             display: block;
             text-align: justify;
-            margin-top: 30;
-            margin-left: 155;
-            margin-right: 155;
-
+            margin-top: 30px;
+            margin-left: 155px;
+            margin-right: 155px;
         }
 
         .content {
-            margin-right: 60;
+            margin: 10px;
+        }
+
+        .button {
+            background-color: #bc9241;
+            border: 0;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 5px;
         }
 
     </style>
@@ -28,7 +34,7 @@
         <div class="row">
             <div class="item">
                 <h2>{{$title}}</h2>
-                <img src="/images/dummy.gif">
+                <img src="/images/{{$imageUrl}}">
 				<span class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident pariatur,
 				veritatis, ducimus quidem doloribus distinctio officia dignissimos repellendus itaque, est id adipisci
 				earum perspiciatis.
@@ -39,7 +45,7 @@
                     Capacity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 Humans
                 </p>
 				<div align="center">
-                    <button type="button" class="btn btn-primary">Make Reservation</button>
+                    <button type="button" class="button">Make Reservation</button>
                 </div>
 				</span>
             </div>

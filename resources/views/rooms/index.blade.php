@@ -2,11 +2,13 @@
 @section('tummy')
     @include('rooms.partials.header')
     <style type="text/css" media="screen">
-
         .contentment {
             padding: 50px 290px;
             text-align: center;
-            height: 100vh;
+        }
+
+        img {
+            object-fit: cover;
         }
 
     </style>
@@ -15,7 +17,7 @@
             <tbody>
             <tr onclick="document.location = '/rooms/page/{{\App\Room::TYPE_AFFORDABLE}}';">
                 <th scope="row"></th>
-                <td><img src="images/dummy.gif" vspace="22px" hspace="15px"
+                <td><img src="/images/affordable1.jpg" vspace="22px" hspace="15px"
                          style="width:150px;height:150px;border:0;"></td>
                 <td><h1>Affordable Room</h1>
 
@@ -25,12 +27,12 @@
                         doloremque. Possimus consequuntur
                         delectus facilis perspiciatis minima, repellat recusandae?</p>
                 </td>
-                <td><img src="images/dummy.gif" vspace="22px"
+                <td><img src="/images/affordable2.jpg" vspace="22px"
                          style="width:150px;height:150px;border:0;"></td>
             </tr>
             <tr onclick="document.location = '/rooms/page/{{\App\Room::TYPE_MIDDLE_CLASS}}';">
                 <th scope="row"></th>
-                <td><img src="images/dummy.gif" vspace="22px" hspace="15px"
+                <td><img src="/images/middleclass1.jpg" vspace="22px" hspace="15px"
                          style="width:150px;height:150px;border:0;"></td>
                 <td><h1>Middle Class Room</h1>
 
@@ -40,12 +42,12 @@
                         doloremque. Possimus consequuntur
                         delectus facilis perspiciatis minima, repellat recusandae?</p>
                 </td>
-                <td><img src="images/dummy.gif" vspace="22px"
+                <td><img src="/images/middleclass2.jpg" vspace="22px"
                          style="width:150px;height:150px;border:0;"></td>
             </tr>
             <tr onclick="document.location = '/rooms/page/{{\App\Room::TYPE_VIP}}';">
                 <th scope="row"></th>
-                <td><img src="images/dummy.gif" vspace="22px" hspace="15px"
+                <td><img src="/images/vip1.jpg" vspace="22px" hspace="15px"
                          style="width:150px;height:150px;border:0;"></td>
                 <td><h1>V.I.P. Room</h1>
 
@@ -56,7 +58,7 @@
                         delectus facilis perspiciatis minima, repellat recusandae?</p>
                 </td>
                 <td>
-                    <img src="images/dummy.gif" vspace="22px"
+                    <img src="/images/vip2.jpg" vspace="22px"
                          style="width:150px;height:150px;border:0;"></td>
             </tr>
             </tbody>

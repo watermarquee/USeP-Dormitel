@@ -93,21 +93,25 @@ class RoomsController extends Controller
   public function page($pageName)
   {
 
-    $title = '';
+    $title    = '';
+    $imageUrl = '';
 
     switch ($pageName) {
       case Room::TYPE_AFFORDABLE:
-        $title = 'Affordable Room';
+        $title    = 'Affordable Room';
+        $imageUrl = 'affordable2.jpg';
         break;
       case Room::TYPE_MIDDLE_CLASS:
-        $title = 'Middle Class Room';
+        $title    = 'Middle Class Room';
+        $imageUrl = 'middleclass2.jpg';
         break;
       case Room::TYPE_VIP:
-        $title = 'V.I.P Room';
+        $title    = 'V.I.P Room';
+        $imageUrl = 'vip2.jpg';
         break;
     }
 
-    return view('rooms.page')->with('title', $title);
+    return view('rooms.page')->with('title', $title)->with('imageUrl', $imageUrl);
   }
 
 }
