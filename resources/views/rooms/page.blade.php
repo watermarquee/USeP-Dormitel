@@ -20,15 +20,6 @@
         .content {
             margin: 10px;
         }
-
-        .button {
-            background-color: #bc9241;
-            border: 0;
-            color: #fff;
-            padding: 5px 15px;
-            border-radius: 5px;
-        }
-
     </style>
     <div class="content">
         <div class="row">
@@ -45,7 +36,8 @@
                     Capacity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 Humans
                 </p>
 				<div align="center">
-                    <a href="/tosend/{{$pageName}}" class="btn btn-warning">Make Reservation</a>
+                    <a href="/requests/create?type={{$pageName}}" class="btn btn-warning">Make
+                        Reservation</a>
                 </div>
 				</span>
             </div>
