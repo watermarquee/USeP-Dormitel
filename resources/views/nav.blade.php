@@ -41,6 +41,11 @@
     <ul class="menu">
         <li class="item"><a href="/home">Home</a></li>
         <li class="item"><a href="/rooms">Dormitel Rooms</a></li>
+        @if(Auth::check())
+            <li class="item"><a href="/auth/logout">Logout</a></li>
+        @else
+            <li class="item"><a href="/auth/login">Login</a></li>
+        @endif
     </ul>
 </nav>
 @yield('content')

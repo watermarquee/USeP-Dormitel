@@ -60,6 +60,9 @@
             <li>
                 <a href="#">Annual Report</a>
             </li>
+            <li>
+                <a href="/auth/logout">Logout</a>
+            </li>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
