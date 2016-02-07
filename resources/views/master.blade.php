@@ -18,6 +18,7 @@
         background-color: maroon;
         position: relative;
         overflow: hidden;
+        margin-top: 70px;
     }
 
     .filler {

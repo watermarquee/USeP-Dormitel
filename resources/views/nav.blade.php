@@ -3,7 +3,10 @@
     .nav {
         padding: 25px 220px;
         background-color: black;
-        position: relative;
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        width: 100%;
     }
 
     .menu {
