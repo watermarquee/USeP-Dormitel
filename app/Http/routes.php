@@ -36,9 +36,9 @@ Route::get('rooms/page/{pageName}', 'RoomsController@page');
 /**
  * Requests routes
  */
-Route::get('requests/create', 'RequestController@create');
+Route::get('reservations/create', 'ReservationController@create');
 
-Route::post('requests/create', 'RequestController@store');
+Route::post('reservations', 'ReservationController@store');
 
 Route::get('tosendtwo', 'MasterController@tosend_two');
 

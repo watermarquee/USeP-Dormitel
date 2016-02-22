@@ -21,9 +21,6 @@ class CreatePersonTable extends Migration
       $table->string('email');
       $table->string('phone');
       $table->string('country');
-      $table->boolean('confirmed')->default(0);
-      $table->string('confirmation_code')->nullable();
-      $table->rememberToken();
       $table->timestamps();
     });
   }

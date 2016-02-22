@@ -6,7 +6,7 @@ use App\Room;
 
 use Illuminate\Http\Request;
 
-class RequestController extends Controller
+class ReservationController extends Controller
 {
 
   /**
@@ -45,7 +45,7 @@ class RequestController extends Controller
         break;
     }
 
-    return view('requests.create')->with('title', $title);
+    return view('reservations.create')->with('title', $title);
   }
 
   /**
@@ -53,22 +53,19 @@ class RequestController extends Controller
    *
    * @return Response
    */
- public function store(Request $request)
-    {
-        $fname = $request->input('fname');
-        $lname = $request->input('lname');
-        $address = $request->input('address');
-        $email = $request->input('email');
-        $country = $request->input('countrySelectBox');
-        $number = $request->input('phoneNumber');
-        $startdate = $request->input('sdate');
-        $enddate = $request->input('edate');
+  public function store(Request $request)
+  {
+    $first_name = $request->input('first_name');
+    $last_name  = $request->input('last_name');
+    $address    = $request->input('address');
+    $email      = $request->input('email');
+    $country    = $request->input('country');
+    $number     = $request->input('phone');
+    $start_date = $request->input('start_date');
+    $end_date   = $request->input('end_date');
 
-
-        $title= $fname . ' ' . $lname . ' ' . $address . ' ' .$email . ' ' .$country . ' ' . $number . ' ' . $startdate . ' ' .$enddate;
-        //
-        return $title;
-    }
+    return $request->all();
+  }
 
   /**
    * Display the specified resource.

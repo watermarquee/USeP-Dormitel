@@ -36,7 +36,7 @@
                     Capacity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 Humans
                 </p>
 				<div align="center">
-                    <a href="/requests/create?type={{$pageName}}" class="btn btn-warning">Make
+                    <a href="/reservations/create?type={{$pageName}}" class="btn btn-warning">Make
                         Reservation</a>
                 </div>
 				</span>
