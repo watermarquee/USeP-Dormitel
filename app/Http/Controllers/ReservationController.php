@@ -2,6 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Person;
+use App\Reservation;
 use App\Room;
 
 use Illuminate\Http\Request;
@@ -55,16 +57,36 @@ class ReservationController extends Controller
    */
   public function store(Request $request)
   {
-    $first_name = $request->input('first_name');
-    $last_name  = $request->input('last_name');
-    $address    = $request->input('address');
-    $email      = $request->input('email');
-    $country    = $request->input('country');
-    $number     = $request->input('phone');
-    $start_date = $request->input('start_date');
-    $end_date   = $request->input('end_date');
 
-    return $request->all();
+    $person             = new Person();
+    $person->first_name = $request->input('first_name');
+    $person->last_name  = $request->input('last_name');
+    $person->address    = $request->input('address');
+    $person->email      = $request->input('email');
+    $person->country    = $request->input('country');
+    $person->phone      = $request->input('phone');
+
+    if ($person->save()) {
+      $reservation             = new Reservation();
+      $reservation->person_id  = $person->id;
+      $reservation->status     = Reservation::STATUS_PENDING;
+      $reservation->price      = 1000; //TODO Hardcoded for now
+      $reservation->notes      = 'This is a note'; //TODO Hardcoded for now
+      $reservation->start_date = $request->input('start_date');
+      $reservation->end_date   = $request->input('end_date');
+      
+      $reservation->room_id    = 1; //TODO Hardcoded for now
+      if ($reservation->save()) {
+        return 'Success';
+        //TODO redirect to a page with success message
+      } else {
+        return 'Fail reservation';
+        //TODO redirect to a page with error message
+      }
+    } else {
+      return 'Fail Person';
+      //TODO redirect to a page with error message
+    }
   }
 
   /**
