@@ -53,10 +53,22 @@ class RequestController extends Controller
    *
    * @return Response
    */
-  public function store()
-  {
-    //
-  }
+ public function store(Request $request)
+    {
+        $fname = $request->input('fname');
+        $lname = $request->input('lname');
+        $address = $request->input('address');
+        $email = $request->input('email');
+        $country = $request->input('countrySelectBox');
+        $number = $request->input('phoneNumber');
+        $startdate = $request->input('sdate');
+        $enddate = $request->input('edate');
+
+
+        $title= $fname . ' ' . $lname . ' ' . $address . ' ' .$email . ' ' .$country . ' ' . $number . ' ' . $startdate . ' ' .$enddate;
+        //
+        return $title;
+    }
 
   /**
    * Display the specified resource.

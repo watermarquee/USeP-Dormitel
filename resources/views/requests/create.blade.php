@@ -6,13 +6,21 @@
 
         <h3>Room Type: {{$title}}</h3>
         <hr>
+
+ <form action="{{ url('requests/create') }}" method="POST" class="form-horizontal">
+ <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+  <!-- First name: <input type="text" name="fname"><br>
+  Last name: <input type="text" name="lname"><br>
+  <input type="submit" value="Submit"> -->
+
+
         <div class="row">
             <!-- left column -->
 
             <div class='col-md-3'>
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker6'>
-                        <input type='date' class="form-control" placeholder="Start Date"/>
+                        <input type='date' class="form-control" placeholder="Start Date" name="sdate"/>
 		                <span class="input-group-addon">
 		                    <span class="glyphicon glyphicon-calendar"></span>
 		                </span>
@@ -22,7 +30,7 @@
             <div class='col-md-3'>
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker7'>
-                        <input type='date' class="form-control" placeholder="End Date"/>
+                        <input type='date' class="form-control" placeholder="End Date" name="edate"/>
 		                <span class="input-group-addon">
 		                    <span class="glyphicon glyphicon-calendar"></span>
 		                </span>
@@ -47,28 +55,28 @@
                         <label class="col-lg-9 control-label"></label>
 
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" placeholder="First Name">
+                            <input class="form-control" type="text" placeholder="First Name" name="fname">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-9 control-label"></label>
 
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" placeholder="Last Name">
+                            <input class="form-control" type="text" placeholder="Last Name" name="lname">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-9 control-label"></label>
 
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" placeholder="Address">
+                            <input class="form-control" type="text" placeholder="Address" name="address">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-9 control-label"></label>
 
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" placeholder="E-mail">
+                            <input class="form-control" type="text" placeholder="E-mail" name="email">
                         </div>
                     </div>
 
@@ -113,7 +121,7 @@
                             <label class="col-xs-3 control-label">Phone number</label>
 
                             <div class="col-xs-5">
-                                <input type="text" class="form-control" name="phoneNumber"
+                                <input type="number" class="form-control" name="phoneNumber"
                                        data-fv-phone="true"
                                        data-fv-phone-country="countrySelectBox"
                                        data-fv-phone-message="The value is not valid %s phone number"/>
@@ -125,7 +133,7 @@
                         <label class="col-md-4 control-label"></label>
 
                         <div class="col-md-4">
-                            <a href="/tosendtwo" class="btn btn-primary">Continue</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                             <span></span>
                             <a href="/rooms"><input type="reset" class="btn btn-default"
                                                     value="Cancel"></a>
@@ -133,6 +141,7 @@
                     </div>
             </div>
         </div>
+        </form>
     </div>
     <hr>
     <!--Script for dynamic Mobile Input-->

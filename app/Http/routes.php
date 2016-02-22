@@ -38,6 +38,8 @@ Route::get('rooms/page/{pageName}', 'RoomsController@page');
  */
 Route::get('requests/create', 'RequestController@create');
 
+Route::post('requests/create', 'RequestController@store');
+
 Route::get('tosendtwo', 'MasterController@tosend_two');
 
 Route::controllers([
