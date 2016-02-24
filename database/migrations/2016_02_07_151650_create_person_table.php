@@ -20,7 +20,6 @@ class CreatePersonTable extends Migration
       $table->string('address');
       $table->string('email');
       $table->string('phone');
-      $table->string('country');
       $table->timestamps();
     });
   }
