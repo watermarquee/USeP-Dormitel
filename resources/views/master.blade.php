@@ -143,7 +143,7 @@
     $(document).ready(function() {
         $('#startDatePicker')
             .datepicker({
-                format: 'mm/dd/yyyy'
+                format: 'yyyy/mm/dd'
             })
             .on('changeDate', function(e) {
                 // Revalidate the start date field
@@ -152,7 +152,7 @@
 
         $('#endDatePicker')
             .datepicker({
-                format: 'mm/dd/yyyy'
+                format: 'yyyy/mm/dd'
             })
             .on('changeDate', function(e) {
                 $('#eventForm').formValidation('revalidateField', 'end_date');
@@ -173,7 +173,7 @@
                                 message: 'The start date is required'
                             },
                             date: {
-                                format: 'MM/DD/YYYY',
+                                format: 'YYYY/MM/DD',
                                 max: 'end_date',
                                 message: 'The start date is not a valid'
                             }
@@ -185,7 +185,7 @@
                                 message: 'The end date is required'
                             },
                             date: {
-                                format: 'MM/DD/YYYY',
+                                format: 'YYYY/MM/DD',
                                 min: 'start_date',
                                 message: 'The end date is not a valid'
                             }
