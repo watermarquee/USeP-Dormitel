@@ -10,7 +10,7 @@
         <form id="eventForm" action="{{ url('reservations') }}" method="POST" class="form-horizontal">
             
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-        <h3>Personal Information:</h3>
+        <h3>Required Information:</h3>
             <!--Start-->
             <style type="text/css">
             /**
