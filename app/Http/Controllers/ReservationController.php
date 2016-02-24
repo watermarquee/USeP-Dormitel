@@ -63,7 +63,6 @@ class ReservationController extends Controller
     $person->last_name  = $request->input('last_name');
     $person->address    = $request->input('address');
     $person->email      = $request->input('email');
-    $person->country    = $request->input('country');
     $person->phone      = $request->input('phone');
 
     if ($person->save()) {
