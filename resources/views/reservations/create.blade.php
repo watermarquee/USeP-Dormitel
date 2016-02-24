@@ -79,9 +79,9 @@
 
                 <div class="form-group">
                     <div class="col-xs-5 col-xs-offset-3">
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" class="btn btn-danger">Submit</button>
                          <span></span>
-                         <a href="/rooms"><input type="reset" class="btn btn-default" value="Cancel"></a>
+                         <a href="/rooms"><button type="button" class="btn btn-default">button</button></a>
                     </div>
                 </div>
         </form>
