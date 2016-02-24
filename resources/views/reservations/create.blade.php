@@ -79,7 +79,7 @@
 
                 <div class="form-group">
                     <div class="col-xs-5 col-xs-offset-3">
-                        <button type="submit" class="btn btn-default">Validate</button>
+                        <button type="submit" class="btn btn-default">Submit</button>
                          <span></span>
                          <a href="/rooms"><input type="reset" class="btn btn-default" value="Cancel"></a>
                     </div>
