@@ -92,7 +92,6 @@ class RoomsController extends Controller
    */
   public function page($type)
   {
-
     $title    = '';
     $imageUrl = '';
 
@@ -115,6 +114,66 @@ class RoomsController extends Controller
 
     return view('rooms.page')->with('title', $title)->with('imageUrl', $imageUrl)->with('pageName', $type)->with('rooms', $rooms);
 
+  }
+
+  /**
+   * Check available rooms
+   *
+   * @return array
+   */
+  public function checkAvailability()
+  {
+    //TODO add params start_date, end_date
+
+    $rooms = Room::all();
+
+    $accepted_rooms = [];
+    foreach ($rooms as $room) {
+
+      $reservations = $room->reservations;
+      if (count($reservations) != 0) {
+        foreach ($reservations as $reservation) {
+          //TODO check availability
+
+          $reservation_start_date = $reservation->start_date;
+          $reservation_end_date   = $reservation->end_date;
+
+          $hit = false; //TODO Hardcoded for now
+
+          if (!$hit) {
+            $accepted_rooms[] = $room;
+          }
+        }
+      } else {
+        $accepted_rooms[] = $room;
+      }
+    }
+
+    // Sort by type
+
+    $affordable  = 0;
+    $middleClass = 0;
+    $vip         = 0;
+
+    foreach ($accepted_rooms as $room) {
+      switch ($room->type) {
+        case Room::TYPE_AFFORDABLE:
+          $affordable++;
+          break;
+        case Room::TYPE_MIDDLE_CLASS:
+          $middleClass++;
+          break;
+        case Room::TYPE_VIP:
+          $vip++;
+          break;
+      }
+    }
+
+    return [
+      'affordableCount'  => $affordable,
+      'middleClassCount' => $middleClass,
+      'vipCount'         => $vip
+    ];
   }
 
 }

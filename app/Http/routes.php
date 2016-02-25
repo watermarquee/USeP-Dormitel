@@ -42,6 +42,8 @@ Route::post('reservations', 'ReservationController@store');
 
 Route::get('tosendtwo', 'MasterController@tosend_two');
 
+Route::get('check', 'RoomsController@checkAvailability');
+
 Route::controllers([
   'auth'     => 'Auth\AuthController',
   'password' => 'Auth\PasswordController',
