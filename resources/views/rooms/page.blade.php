@@ -35,10 +35,31 @@
 				<p>
                     Capacity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 Humans
                 </p>
-				<div align="center">
-                    <a href="/reservations/create?type={{$pageName}}" class="btn btn-warning">Make
-                        Reservation</a>
-                </div>
+                    @if(count($rooms) == 0)
+                        No rooms available.
+                    @else
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Room #</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($rooms as $room)
+                                <tr>
+                                    <td>{{$room->name}}</td>
+                                    <td>{{$room->price}}</td>
+                                    <td>
+                                        <a href="/reservations/create?type={{$pageName}}&room_id={{$room->id}}"
+                                           class="btn btn-warning">Make
+                                            Reservation</a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    @endif
 				</span>
             </div>
         </div>

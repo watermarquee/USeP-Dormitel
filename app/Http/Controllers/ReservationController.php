@@ -31,7 +31,8 @@ class ReservationController extends Controller
   public function create(Request $request)
   {
 
-    $type = $request->get('type');
+    $type    = $request->get('type');
+    $room_id = $request->get('room_id');
 
     $title = '';
 
@@ -47,7 +48,7 @@ class ReservationController extends Controller
         break;
     }
 
-    return view('reservations.create')->with('title', $title);
+    return view('reservations.create')->with('title', $title)->with('room_id', $room_id);
   }
 
   /**
@@ -73,8 +74,8 @@ class ReservationController extends Controller
       $reservation->notes      = $request->input('notes');
       $reservation->start_date = $request->input('start_date');
       $reservation->end_date   = $request->input('end_date');
-      
-      $reservation->room_id    = 1; //TODO Hardcoded for now
+
+      $reservation->room_id = (int)$request->input('room_id');
       if ($reservation->save()) {
         return 'Success';
         //TODO redirect to a page with success message

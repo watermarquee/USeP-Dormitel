@@ -90,13 +90,13 @@ class RoomsController extends Controller
   /**
    * Render page based on selected room type
    */
-  public function page($pageName)
+  public function page($type)
   {
 
     $title    = '';
     $imageUrl = '';
 
-    switch ($pageName) {
+    switch ($type) {
       case Room::TYPE_AFFORDABLE:
         $title    = 'Affordable Room';
         $imageUrl = 'affordable2.jpg';
@@ -111,7 +111,9 @@ class RoomsController extends Controller
         break;
     }
 
-    return view('rooms.page')->with('title', $title)->with('imageUrl', $imageUrl)->with('pageName', $pageName);
+    $rooms = Room::where('type', $type)->where('availability', Room::AVAILABILITY_VACANT)->get();
+
+    return view('rooms.page')->with('title', $title)->with('imageUrl', $imageUrl)->with('pageName', $type)->with('rooms', $rooms);
 
   }
 
