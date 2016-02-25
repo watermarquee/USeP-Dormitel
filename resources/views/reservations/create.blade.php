@@ -101,7 +101,11 @@
                 format: 'yyyy/mm/dd'
             })
             .on('changeDate', function(e) {
-                // Revalidate the start date field
+                var startDate = $('#startDatePicker').datepicker('getDate');
+                //var new
+                startDate.setDate(startDate.getDate() + 7);
+                $('#endDatePicker').datepicker('setEndDate', startDate);
+               // Revalidate the start date field
                 $('#eventForm').formValidation('revalidateField', 'start_date');
             });
 
