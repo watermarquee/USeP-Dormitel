@@ -76,6 +76,12 @@
                         <input type="number" class="form-control" placeholder="Contact Number" name="phone" />
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label"></label>
+                    <div class="col-xs-5">
+                        <textarea class="form-control" placeholder="Additional Notes" name="notes"></textarea>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <div class="col-xs-5 col-xs-offset-3">

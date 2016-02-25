@@ -7,7 +7,7 @@
         }
     </style>
     <div class="content">
-        <h1>USeP Dormitel Rooms</h1>
+        <h1>Dormitel Room Types</h1>
         <hr>
         <div class="container">
             <div class='col-md-3'>

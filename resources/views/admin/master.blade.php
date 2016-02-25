@@ -52,7 +52,10 @@
                 <a href="#">Reservations in Progress</a>
             </li>
             <li>
-                <a href="#">Not Completed</a>
+                <a href="#">Cacelled by Admin</a>
+            </li>
+            <li>
+                <a href="#">Cacelled by Client</a>
             </li>
             <li>
                 <a href="#">Last 3 Months Report</a>
