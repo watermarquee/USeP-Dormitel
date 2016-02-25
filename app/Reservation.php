@@ -30,4 +30,15 @@ class Reservation extends Model
     return $this->belongsTo('App\Person');
   }
 
+  public function generateUniqueId()
+  {
+    $uniqueId = 'DORM';
+    $rem = 7 - strlen($this->id);
+    for($i=0; $i<$rem; $i0++){
+      $uniqueId .= '0';
+    }
+    $uniqueId .= $this->id;
+    return $uniqueId;
+  }
+
 }

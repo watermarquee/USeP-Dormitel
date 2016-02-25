@@ -13,4 +13,9 @@ class Person extends Model
   {
     return $this->hasOne('App\Reservation');
   }
+
+  public function getFullName()
+  {
+  	return $this->first_name.' '.$this->last_name;
+  }
 }

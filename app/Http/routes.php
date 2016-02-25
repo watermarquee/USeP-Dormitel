@@ -26,6 +26,7 @@ Route::get('home', 'HomeController@index');
  * Admin routes
  */
 Route::get('admin/dashboard', 'AdminController@index');
+Route::get('admin/reservations/upcoming', 'AdminController@upcoming');
 
 /**
  * Room routes
