@@ -24,56 +24,56 @@
             </style>
 
                 <div class="form-group">
-                    <label class="col-xs-3 control-label">Start date</label>
+                    <label class="col-xs-3 control-label"></label>
                     <div class="col-xs-5 dateContainer">
                         <div class="input-group input-append date" id="startDatePicker">
-                            <input type="text" class="form-control" name="start_date" />
+                            <input type="text" class="form-control" placeholder="Start Date" name="start_date" />
                             <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-3 control-label">End date</label>
+                    <label class="col-xs-3 control-label"></label>
                     <div class="col-xs-5 dateContainer">
                         <div class="input-group input-append date" id="endDatePicker">
-                            <input type="text" class="form-control" name="end_date" />
+                            <input type="text" class="form-control" placeholder="End Date" name="end_date" />
                             <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-3 control-label">First Name</label>
+                    <label class="col-xs-3 control-label"></label>
                     <div class="col-xs-5">
-                        <input type="text" class="form-control" name="first_name" />
+                        <input type="text" class="form-control" placeholder="First Name" name="first_name"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-3 control-label">Surname</label>
+                    <label class="col-xs-3 control-label"></label>
                     <div class="col-xs-5">
-                        <input type="text" class="form-control" name="last_name" />
+                        <input type="text" class="form-control" placeholder="Surname" name="last_name"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-3 control-label">Address</label>
+                    <label class="col-xs-3 control-label"></label>
                     <div class="col-xs-5">
-                        <input type="text" class="form-control" name="address" />
+                        <input type="text" class="form-control" placeholder="Address" name="address" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-3 control-label">e-Mail</label>
+                    <label class="col-xs-3 control-label"></label>
                     <div class="col-xs-5">
-                        <input type="text" class="form-control" name="email" />
+                        <input type="text" class="form-control" placeholder="e-Mail" name="email" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-xs-3 control-label">Contact Number</label>
+                    <label class="col-xs-3 control-label"></label>
                     <div class="col-xs-5">
-                        <input type="number" class="form-control" name="phone" />
+                        <input type="number" class="form-control" placeholder="Contact Number" name="phone" />
                     </div>
                 </div>
 
@@ -81,7 +81,7 @@
                     <div class="col-xs-5 col-xs-offset-3">
                         <button type="submit" class="btn btn-danger">Submit</button>
                          <span></span>
-                         <a href="/rooms"><button type="button" class="btn btn-default">button</button></a>
+                         <a href="/rooms"><button type="button" class="btn btn-default">Cancel</button></a>
                     </div>
                 </div>
         </form>
