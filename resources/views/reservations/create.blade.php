@@ -124,7 +124,7 @@
                             date: {
                                 format: 'YYYY/MM/DD',
                                 max: 'end_date',
-                                message: 'The start date is not a valid'
+                                message: 'Start date should predate End Date'
                             }
                         }
                     },
@@ -136,7 +136,7 @@
                             date: {
                                 format: 'YYYY/MM/DD',
                                 min: 'start_date',
-                                message: 'The end date is not a valid'
+                                message: 'End Date should not predate Start Date'
                             }
                         }
                     },
