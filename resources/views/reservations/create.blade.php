@@ -87,5 +87,107 @@
         </form>
         <!--End-->
     <hr>
+    <script type="text/javascript">
+     //Start for DateScript
+    $(document).ready(function() {
+        $('#startDatePicker')
+            .datepicker({
+                format: 'yyyy/mm/dd'
+            })
+            .on('changeDate', function(e) {
+                // Revalidate the start date field
+                $('#eventForm').formValidation('revalidateField', 'start_date');
+            });
 
+        $('#endDatePicker')
+            .datepicker({
+                format: 'yyyy/mm/dd'
+            })
+            .on('changeDate', function(e) {
+                $('#eventForm').formValidation('revalidateField', 'end_date');
+            });
+
+        $('#eventForm')
+            .formValidation({
+                framework: 'bootstrap',
+                icon: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    start_date: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The start date is required'
+                            },
+                            date: {
+                                format: 'YYYY/MM/DD',
+                                max: 'end_date',
+                                message: 'The start date is not a valid'
+                            }
+                        }
+                    },
+                    end_date: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The end date is required'
+                            },
+                            date: {
+                                format: 'YYYY/MM/DD',
+                                min: 'start_date',
+                                message: 'The end date is not a valid'
+                            }
+                        }
+                    },
+                    first_name: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Your first Name is required'
+                            }
+                        }
+                    },
+                    last_name: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Your surname is required'
+                            }
+                        }
+                    },
+                    address: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Your address is required'
+                            }
+                        }
+                    },
+                    email: {
+                        validators: {
+                            notEmpty: {
+                                message: 'e-Mail is required'
+                            }
+                        }
+                    },
+                    phone: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Contact number is required'
+                            }
+                        }
+                    }
+                }
+            })
+            .on('success.field.fv', function(e, data) {
+                if (data.field === 'start_date' && !data.fv.isValidField('end_date')) {
+                    // We need to revalidate the end date
+                    data.fv.revalidateField('end_date');
+                }
+
+                if (data.field === 'end_date' && !data.fv.isValidField('start_date')) {
+                    // We need to revalidate the start date
+                    data.fv.revalidateField('start_date');
+                }   
+            });
+    });//End DateScript
+</script>
 @stop

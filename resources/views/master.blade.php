@@ -116,14 +116,7 @@
 
 <body>
 @include('nav')
-@yield('tummy')
-        <!--footer start here-->
-<div class="filler footer-content">
-    Copyright © 2016, Mark Lawrence Mangawang Rights
-    Reserved.Privacy | Terms
-    and
-    conditions
-</div>
+
 <script src="/jquery/jquery-2.1.3.js"></script>
 <script src="/js/bootstrap335.min.js"></script>
 <!-- <script src="http://formvalidation.io/vendor/formvalidation/js/formValidation.min.js"></script>
@@ -132,6 +125,16 @@
 <script src="/js/FormValidationFramework.js"></script>
 <!-- https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js -->
 <script src="/js/bootstrap-datepicker.min.js"></script>
+
+@yield('tummy')
+        <!--footer start here-->
+<div class="filler footer-content">
+    Copyright © 2016, Mark Lawrence Mangawang Rights
+    Reserved.Privacy | Terms
+    and
+    conditions
+</div>
+
 
 <script type="text/javascript">
     //Script for Parallax
@@ -144,108 +147,6 @@
         $('.description').css({
             'transform': 'translate(0px, ' + scroll / 8 + '%)'
         });//end for Parallax
-
-    //Start for DateScript
-    $(document).ready(function() {
-        $('#startDatePicker')
-            .datepicker({
-                format: 'yyyy/mm/dd'
-            })
-            .on('changeDate', function(e) {
-                // Revalidate the start date field
-                $('#eventForm').formValidation('revalidateField', 'start_date');
-            });
-
-        $('#endDatePicker')
-            .datepicker({
-                format: 'yyyy/mm/dd'
-            })
-            .on('changeDate', function(e) {
-                $('#eventForm').formValidation('revalidateField', 'end_date');
-            });
-
-        $('#eventForm')
-            .formValidation({
-                framework: 'bootstrap',
-                icon: {
-                    valid: 'glyphicon glyphicon-ok',
-                    invalid: 'glyphicon glyphicon-remove',
-                    validating: 'glyphicon glyphicon-refresh'
-                },
-                fields: {
-                    start_date: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The start date is required'
-                            },
-                            date: {
-                                format: 'YYYY/MM/DD',
-                                max: 'end_date',
-                                message: 'The start date is not a valid'
-                            }
-                        }
-                    },
-                    end_date: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The end date is required'
-                            },
-                            date: {
-                                format: 'YYYY/MM/DD',
-                                min: 'start_date',
-                                message: 'The end date is not a valid'
-                            }
-                        }
-                    },
-                    first_name: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Your first Name is required'
-                            }
-                        }
-                    },
-                    last_name: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Your surname is required'
-                            }
-                        }
-                    },
-                    address: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Your address is required'
-                            }
-                        }
-                    },
-                    email: {
-                        validators: {
-                            notEmpty: {
-                                message: 'e-Mail is required'
-                            }
-                        }
-                    },
-                    phone: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Contact number is required'
-                            }
-                        }
-                    }
-                }
-            })
-            .on('success.field.fv', function(e, data) {
-                if (data.field === 'start_date' && !data.fv.isValidField('end_date')) {
-                    // We need to revalidate the end date
-                    data.fv.revalidateField('end_date');
-                }
-
-                if (data.field === 'end_date' && !data.fv.isValidField('start_date')) {
-                    // We need to revalidate the start date
-                    data.fv.revalidateField('start_date');
-                }   
-            });
-    });//End DateScript
 
     //Start Welcome.blade DatePicker
     var timeDiff;
