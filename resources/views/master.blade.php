@@ -146,32 +146,8 @@
 
         $('.description').css({
             'transform': 'translate(0px, ' + scroll / 8 + '%)'
-        });//end for Parallax
-
-    //Start Welcome.blade DatePicker
-    var timeDiff;
-        $(function () {
-            $('#datetimepicker6').datepicker();
-            $('#datetimepicker7').datepicker({
-                useCurrent: false //Important! See issue #1075
-            });
-            $("#datetimepicker6").on("dp.change", function (e) {
-                if (timeDiff) {
-                    $('#datetimepicker7').data("DateTimePicker").date(e.date.add(timeDiff, 's'));
-                    $('#datetimepicker7').data("DateTimePicker").minDate(false);
-                } else $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-            });
-            $("#datetimepicker7").on("dp.change", function (e) {
-                var CurrStartDate = new Date($('#datetimepicker6').data("DateTimePicker").date());
-                var CurrEndDate = new Date($('#datetimepicker7').data("DateTimePicker").date());
-                if (CurrEndDate) {
-                    timeDiff = (CurrEndDate - CurrStartDate) / 1000;
-                }
-                $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-            });
-        });
-    }); //End Welcome.blade DatePicker
-
+        })//end for Parallax
+    });
 </script>
 </body>
 </html>

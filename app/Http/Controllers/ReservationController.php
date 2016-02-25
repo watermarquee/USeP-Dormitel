@@ -70,7 +70,7 @@ class ReservationController extends Controller
       $reservation->person_id  = $person->id;
       $reservation->status     = Reservation::STATUS_PENDING;
       $reservation->price      = 1000; //TODO Hardcoded for now
-      $reservation->notes      = 'This is a note'; //TODO Hardcoded for now
+      $reservation->notes      = $request->input('notes');
       $reservation->start_date = $request->input('start_date');
       $reservation->end_date   = $request->input('end_date');
       

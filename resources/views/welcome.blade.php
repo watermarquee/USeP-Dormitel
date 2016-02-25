@@ -9,11 +9,13 @@
     <div class="content">
         <h1>Dormitel Room Types</h1>
         <hr>
+        <form id="eventForm">
+
         <div class="container">
             <div class='col-md-3'>
                 <div class="form-group">
-                    <div class='input-group date' id='datetimepicker6'>
-                        <input type='text' class="form-control" placeholder="Start Date"/>
+                    <div class='input-group date' id='startDatePicker'>
+                        <input type='text' class="form-control" placeholder="Start Date" name="start_date"/>
 		                <span class="input-group-addon">
 		                    <span class="glyphicon glyphicon-calendar"></span>
 		                </span>
@@ -22,8 +24,8 @@
             </div>
             <div class='col-md-3'>
                 <div class="form-group">
-                    <div class='input-group date' id='datetimepicker7'>
-                        <input type='text' class="form-control" placeholder="End Date"/>
+                    <div class='input-group date' id='endDatePicker'>
+                        <input type='text' class="form-control" placeholder="End Date" name="end_date"/>
 		                <span class="input-group-addon">
 		                    <span class="glyphicon glyphicon-calendar"></span>
 		                </span>
@@ -36,7 +38,7 @@
                 </button>
             </div>
         </div>
-
+        </form>
 
         <div class="row">
             <div class="col-md-4">
@@ -62,4 +64,76 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+     //Start for DateScript
+    $(document).ready(function() {
+        $('#startDatePicker')
+            .datepicker({
+                format: 'yyyy/mm/dd'
+            })
+            .on('changeDate', function(e) {
+                var startDate = $('#startDatePicker').datepicker('getDate');
+                //var new
+                startDate.setDate(startDate.getDate() + 7);
+                $('#endDatePicker').datepicker('setEndDate', startDate);
+               // Revalidate the start date field
+                $('#eventForm').formValidation('revalidateField', 'start_date');
+            });
+
+        $('#endDatePicker')
+            .datepicker({
+                format: 'yyyy/mm/dd'
+            })
+            .on('changeDate', function(e) {
+                $('#eventForm').formValidation('revalidateField', 'end_date');
+            });
+
+        $('#eventForm')
+            .formValidation({
+                framework: 'bootstrap',
+                icon: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    start_date: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The start date is required'
+                            },
+                            date: {
+                                format: 'YYYY/MM/DD',
+                                max: 'end_date',
+                                message: 'Start date should predate End Date'
+                            }
+                        }
+                    },
+                    end_date: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The end date is required'
+                            },
+                            date: {
+                                format: 'YYYY/MM/DD',
+                                min: 'start_date',
+                                message: 'End Date should not predate Start Date'
+                            }
+                        }
+                    }
+                }
+            })
+            .on('success.field.fv', function(e, data) {
+                if (data.field === 'start_date' && !data.fv.isValidField('end_date')) {
+                    // We need to revalidate the end date
+                    data.fv.revalidateField('end_date');
+                }
+
+                if (data.field === 'end_date' && !data.fv.isValidField('start_date')) {
+                    // We need to revalidate the start date
+                    data.fv.revalidateField('start_date');
+                }   
+            });
+    });//End DateScript
+</script>
 @stop
