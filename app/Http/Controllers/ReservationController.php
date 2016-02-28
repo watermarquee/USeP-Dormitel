@@ -51,6 +51,11 @@ class ReservationController extends Controller
     return view('reservations.create')->with('title', $title)->with('room_id', $room_id);
   }
 
+  public static function quickRandom($length = 8) {
+    $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
+  }
+
   /**
    * Store a newly created resource in storage.
    *
@@ -60,6 +65,7 @@ class ReservationController extends Controller
   {
 
     $person             = new Person();
+    $person->unique_id  = $this->quickRandom();
     $person->first_name = $request->input('first_name');
     $person->last_name  = $request->input('last_name');
     $person->address    = $request->input('address');
