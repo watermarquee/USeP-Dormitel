@@ -19,7 +19,7 @@
 
 					@foreach($reservations as $reservation)
 						<tr>
-							<td>{{ $reservation->generateUniqueId() }}</td>
+							<td>{{ $reservation->v4() }}</td>
 							<td>{{ $reservation->person->getFullName() }}</td>
 							<td>{{ $reservation->room->type }}</td>
 							<td>{{ $reservation->start_date }} - {{ $reservation->end_date }}</td>

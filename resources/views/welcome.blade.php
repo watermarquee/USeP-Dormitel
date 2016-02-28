@@ -85,6 +85,11 @@
                 format: 'yyyy/mm/dd'
             })
             .on('changeDate', function(e) {
+                var endDate = $('#endDatePicker').datepicker('getDate');
+                //var new
+                endDate.setDate(endDate.getDate() - 7);
+                $('#startDatePicker').datepicker('setStartDate', endDate);
+                //Revalidate
                 $('#eventForm').formValidation('revalidateField', 'end_date');
             });
 
