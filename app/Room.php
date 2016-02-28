@@ -4,9 +4,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
-  const TYPE_AFFORDABLE = 'affordable';
-  const TYPE_MIDDLE_CLASS = 'middleClass';
-  const TYPE_VIP = 'vip';
+  const TYPE_AFFORDABLE = 'Affordable';
+  const TYPE_MIDDLE_CLASS = 'Middle Class';
+  const TYPE_VIP = 'V.I.P.';
 
   const AVAILABILITY_OCCUPIED = 'occupied';
   const AVAILABILITY_VACANT = 'vacant';

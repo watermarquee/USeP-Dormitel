@@ -41,8 +41,9 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>Room #</th>
+                                <th>Room No.</th>
                                 <th>Price</th>
+                                <th>PAX</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -51,6 +52,7 @@
                                 <tr>
                                     <td>{{$room->name}}</td>
                                     <td>{{$room->price}}</td>
+                                    <th>{{$room->pax}} / {{$room->pax}} </th>
                                     <td>
                                         <a href="/reservations/create?type={{$pageName}}&room_id={{$room->id}}"
                                            class="btn btn-warning">Make

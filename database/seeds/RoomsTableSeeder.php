@@ -69,7 +69,7 @@ class RoomsTableSeeder extends Seeder {
                       'type' => Room::TYPE_MIDDLE_CLASS,
                       'pax'  => 10,
                       'availability' => Room::AVAILABILITY_VACANT,
-                      'price' => Room::PRICE_TYPE_AFFORDABLE]);
+                      'price' => Room::PRICE_TYPE_MIDDLE_CLASS]);
 
         Room::create(['name' => '#11',
                       'type' => Room::TYPE_MIDDLE_CLASS,
@@ -79,10 +79,18 @@ class RoomsTableSeeder extends Seeder {
 
         Room::create(['name' => '#12',
                       'type' => Room::TYPE_MIDDLE_CLASS,
-                      'pax'  => 5,
+                      'pax'  => 10,
                       'availability' => Room::AVAILABILITY_VACANT,
                       'price' => Room::PRICE_TYPE_MIDDLE_CLASS]);
         //End Big Room
+
+        //V.I.P.
+        Room::create(['name' => '#13',
+                      'type' => Room::TYPE_VIP,
+                      'pax'  => 2,
+                      'availability' => Room::AVAILABILITY_VACANT,
+                      'price' => Room::PRICE_TYPE_VIP]);
+        //End V.I.P.
     }
 
 }
