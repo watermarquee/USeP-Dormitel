@@ -5,7 +5,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1>Upcoming Reservations</h1>
+				<h1>Latest Reservations</h1>
 				<table class="table table-bordered">
 					<thead>
 						<tr>

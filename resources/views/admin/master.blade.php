@@ -40,10 +40,10 @@
                 </a>
             </li>
             <li>
-                <a href="#">Latest Reservations Entered</a>
+                <a href="{{ action('AdminController@index') }}">Latest Reservations Entered</a>
             </li>
             <li>
-                <a href="{{ action('AdminController@upcoming') }}">Upcoming Reservations</a>
+                <a href="#">Upcoming Reservations</a>
             </li>
             <li>
                 <a href="">Pending Reservations</a>

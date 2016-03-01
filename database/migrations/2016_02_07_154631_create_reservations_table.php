@@ -19,8 +19,8 @@ class CreateReservationsTable extends Migration
       $table->string('status');
       $table->double('price');
       $table->text('notes');
-      $table->timestamp('start_date');
-      $table->timestamp('end_date');
+      $table->date('start_date')->nullable();
+      $table->date('end_date')->nullable();
       $table->integer('room_id');
       $table->timestamps();
     });

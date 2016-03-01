@@ -24,15 +24,11 @@ class AdminController extends Controller
    *
    * @return Response
    */
-  public function index()
-  {
-    return view('admin.dashboard');
-  }
 
-  public function upcoming() 
+  public function index() 
   {
     $reservations = Reservation::where('status', 'pending')->get();
 
-    return view('admin.upcoming')->with(compact('reservations'));
+    return view('admin.latest')->with(compact('reservations'));
   }
 }

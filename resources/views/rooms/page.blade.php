@@ -29,12 +29,7 @@
 				<span class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident pariatur,
 				veritatis, ducimus quidem doloribus distinctio officia dignissimos repellendus itaque, est id adipisci
 				earum perspiciatis.
-				<p style="margin-top:20px">
-                    Wi-Fi:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes
-                </p>
-				<p>
-                    Capacity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 Humans
-                </p>
+		
                     @if(count($rooms) == 0)
                         No rooms available.
                     @else

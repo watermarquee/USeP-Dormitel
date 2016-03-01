@@ -168,12 +168,13 @@ class RoomsController extends Controller
           break;
       }
     }
+        
+    return view('rooms.results')->with([
 
-    return [
-      'affordableCount'  => $affordable,
-      'middleClassCount' => $middleClass,
-      'vipCount'         => $vip
-    ];
+      'affordable' => $affordable,
+      'middleClass' => $middleClass,
+      'vip' => $vip
+
+      ]);
   }
-
 }
