@@ -46,16 +46,13 @@
                 <a href="#">Upcoming Reservations</a>
             </li>
             <li>
-                <a href="">Pending Reservations</a>
+                <a href="#">Pending Reservations</a>
             </li>
             <li>
                 <a href="#">Reservations in Progress</a>
             </li>
             <li>
-                <a href="#">Cacelled by Admin</a>
-            </li>
-            <li>
-                <a href="#">Cacelled by Client</a>
+                <a href="#">Cacelled</a>
             </li>
             <li>
                 <a href="#">Last 3 Months Report</a>

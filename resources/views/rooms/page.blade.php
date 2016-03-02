@@ -38,7 +38,7 @@
                             <tr>
                                 <th>Room No.</th>
                                 <th>Price</th>
-                                <th>PAX</th>
+                                <th>Status</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -47,11 +47,15 @@
                                 <tr>
                                     <td>{{$room->name}}</td>
                                     <td>{{$room->price}}</td>
-                                    <th>{{$room->pax}} / {{$room->pax}} </th>
+                                    <th>{{$room->occupants}} / {{$room->pax}} </th>
+                                @if(count($room->occupants) == $room->pax)
+                                    <td>Currently not available</td>
+                                    @else
                                     <td>
                                         <a href="/reservations/create?type={{$pageName}}&room_id={{$room->id}}"
                                            class="btn btn-warning">Make
                                             Reservation</a></td>
+                                            @endif
                                 </tr>
                             @endforeach
                             </tbody>
