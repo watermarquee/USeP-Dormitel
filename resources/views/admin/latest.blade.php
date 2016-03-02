@@ -24,7 +24,7 @@
 							<td>{{ $reservation->person->getUNiqueID() }}</td>
 							<td>{{ $reservation->person->getFullName() }}</td>
 							<td>{{ $reservation->room->type }}</td>
-							<td>{{ $reservation->start_date }} - {{ $reservation->end_date }}</td>
+							<td>{{ $reservation->start_date }} — {{ $reservation->end_date }}</td>
 							<td>{{ $reservation->status }}</td>
 							<td><select id="status" name="status">
 								    <option value="1">confirm</option>
