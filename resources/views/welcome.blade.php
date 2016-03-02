@@ -33,8 +33,8 @@
                 </div>
             </div>
             <div class='col-md-3'>
-                <a href="check" style="text-decoration:none"><button class="btn btn-large btn-block btn-default">Check Availability<span
-                            class="glyphicon glyphicon-eye-open" style="margin-left: 10px"></span></a>
+                <button type="submit" class="btn btn-large btn-block btn-default">Check Availability<span
+                            class="glyphicon glyphicon-eye-open" style="margin-left: 10px"></span>
                 </button>
             </div>
         </div>
@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">     
+    <script type="text/javascript">
      //Start for DateScript
     $(document).ready(function() {
         $('#startDatePicker')
