@@ -49,10 +49,10 @@
                 <a href="#">Pending Reservations</a>
             </li>
             <li>
-                <a href="#">Reservations in Progress</a>
+                <a href="{{ action('AdminController@confirmed') }}">Confirmed Reservations</a>
             </li>
             <li>
-                <a href="#">Cacelled</a>
+                <a href="{{ action('AdminController@cancelled') }}">Cacelled</a>
             </li>
             <li>
                 <a href="#">Last 3 Months Report</a>

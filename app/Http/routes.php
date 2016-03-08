@@ -26,6 +26,8 @@ Route::get('home', 'HomeController@index');
  * Admin routes
  */
 Route::get('admin/dashboard', 'AdminController@index');
+Route::get('admin/dashboard/confirmed', 'AdminController@confirmed');
+Route::get('admin/dashboard/cancelled', 'AdminController@cancelled');
 
 /**
  * Room routes
@@ -39,6 +41,10 @@ Route::get('rooms/page/{pageName}', 'RoomsController@page');
 Route::get('reservations/create', 'ReservationController@create');
 
 Route::post('reservations', 'ReservationController@store');
+//confirmation route
+Route::get('reservation/confirm/{id}', 'ReservationController@confirm')->where('id', '[0-9]+');
+//cancelled route
+Route::get('reservation/cancelled/{id}', 'ReservationController@cancelled')->where('id', '[0-9]+');
 
 Route::get('tosendtwo', 'MasterController@tosend_two');
 

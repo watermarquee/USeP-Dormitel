@@ -48,7 +48,7 @@
                                     <td>{{$room->name}}</td>
                                     <td>{{$room->price}}</td>
                                     <th>{{$room->occupants}} / {{$room->pax}} </th>
-                                @if(count($room->occupants) == $room->pax)
+                                @if(($room->occupants) == $room->pax)
                                     <td>Currently not available</td>
                                     @else
                                     <td>

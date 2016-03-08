@@ -7,6 +7,7 @@ class Reservation extends Model
   const STATUS_PENDING = 'pending';
   const STATUS_ACCEPTED = 'accepted';
   const STATUS_CANCELLED = 'cancelled';
+  const STATUS_DONE = 'done';
 
   protected $table = 'reservations';
 

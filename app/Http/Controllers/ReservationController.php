@@ -95,6 +95,26 @@ class ReservationController extends Controller
     }
   }
 
+public function confirm($id) {
+  $confirm = Reservation::find($id);
+  $confirm->status = Reservation::STATUS_ACCEPTED;
+  $confirm->save();
+  $room = $confirm->room;
+  $room->occupants=$room->occupants+1;
+  $room->save();
+  //get room ID
+
+
+  return redirect('admin/dashboard');
+}
+
+public function cancelled($id) {
+  $cancel = Reservation::find($id);
+  $cancel->status = Reservation::STATUS_CANCELLED;
+  $cancel->save();
+  return redirect('admin/dashboard/cancelled');
+}
+
   /**
    * Display the specified resource.
    *
