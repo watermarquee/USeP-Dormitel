@@ -8,14 +8,9 @@ use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
-class MasterController extends Controller
-{
-  public function tosend_two()
-  {
-    return view('tosend.step_two');
-  }
-
-  public function cronTest() {
+class MasterController extends Controller {
+  
+  public function cron() {
   	$reservations = Reservation::where('end_date', '<', Carbon::now())->where('status',Reservation::STATUS_ACCEPTED)->get();
 
     foreach ($reservations as $reservation) {

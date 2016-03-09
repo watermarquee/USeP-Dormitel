@@ -76,7 +76,7 @@ class ReservationController extends Controller
       $reservation             = new Reservation();
       $reservation->person_id  = $person->id;
       $reservation->status     = Reservation::STATUS_PENDING;
-      $reservation->price      = 1000; //TODO Hardcoded for now
+      $reservation->price      = Room::find((int)$request->input('room_id'))->price;
       $reservation->notes      = $request->input('notes');
       $reservation->start_date = $request->input('start_date');
       $reservation->end_date   = $request->input('end_date');
@@ -115,6 +115,12 @@ public function cancelled($id) {
   return redirect('admin/dashboard/cancelled');
 }
 
+public function finishedReserved($id) {
+  $done = Reservation::find($id);
+  $done->status = Reservation::STATUS_DONE;
+  $done->save();
+  return redirect('admin/dashboard/finished');
+}
   /**
    * Display the specified resource.
    *

@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Room;
+use App\Reservation;
 use Illuminate\Http\Request;
 
 class RoomsController extends Controller
@@ -121,60 +122,65 @@ class RoomsController extends Controller
    *
    * @return array
    */
-  public function checkAvailability()
+  public function checkAvailability(Request $request)
   {
-    //TODO add params start_date, end_date
+    //add params start_date, end_date
+    $input = $request->all();
 
     $rooms = Room::all();
+    $check_date = Reservation::whereNotBetween('start_date',[$input['start_date'], $input['end_date']])->whereNotBetween('end_date',[$input['start_date'], $input['end_date']])->get();
+    // dd(($check_date));
+    // $accepted_rooms = [];
+    // foreach ($rooms as $room) {
 
-    $accepted_rooms = [];
-    foreach ($rooms as $room) {
+    //   $reservations = $room->reservations;
+    //   if (count($reservations) != 0) {
+    //     foreach ($reservations as $reservation) {
+    //       //TODO check availability
 
-      $reservations = $room->reservations;
-      if (count($reservations) != 0) {
-        foreach ($reservations as $reservation) {
-          //TODO check availability
+    //       $reservation_start_date = $reservation->start_date;
+    //         $reservation_end_date   = $reservation->end_date;
 
-          $reservation_start_date = $reservation->start_date;
-          $reservation_end_date   = $reservation->end_date;
+    //       $hit = false; //TODO Hardcoded for now
 
-          $hit = false; //TODO Hardcoded for now
+    //       if (!$hit) {
+    //         $accepted_rooms[] = $room;
+    //       }
+    //     }
+    //   } else {
+    //     $accepted_rooms[] = $room;
+    //   }
+    // }
 
-          if (!$hit) {
-            $accepted_rooms[] = $room;
-          }
-        }
-      } else {
-        $accepted_rooms[] = $room;
-      }
-    }
+    // // Sort by type
 
-    // Sort by type
+    // $affordable  = 0;
+    // $middleClass = 0;
+    // $vip         = 0;
 
-    $affordable  = 0;
-    $middleClass = 0;
-    $vip         = 0;
-
-    foreach ($accepted_rooms as $room) {
-      switch ($room->type) {
-        case Room::TYPE_AFFORDABLE:
-          $affordable++;
-          break;
-        case Room::TYPE_MIDDLE_CLASS:
-          $middleClass++;
-          break;
-        case Room::TYPE_VIP:
-          $vip++;
-          break;
-      }
-    }
+    // foreach ($accepted_rooms as $room) {
+    //   switch ($room->type) {
+    //     case Room::TYPE_AFFORDABLE:
+    //       $affordable++;
+    //       break;
+    //     case Room::TYPE_MIDDLE_CLASS:
+    //       $middleClass++;
+    //       break;
+    //     case Room::TYPE_VIP:
+    //       $vip++;
+    //       break;
+    //   }
+    // }
         
-    return view('rooms.results')->with([
+    // return view('rooms.results')->with([
 
-      'affordable' => $affordable,
-      'middleClass' => $middleClass,
-      'vip' => $vip
+    //   'affordable' => $affordable,
+    //   'middleClass' => $middleClass,
+    //   'vip' => $vip
 
-      ]);
+    //   ]);
+    // $check_date = Reservation::whereBetween('start_date',[$input['start_date']]);
+    // dd($check_date);
+    return view('welcome')->with(compact('check_date', 'input'));
   }
 }

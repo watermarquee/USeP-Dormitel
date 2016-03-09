@@ -37,8 +37,8 @@
                             <thead>
                             <tr>
                                 <th>Room No.</th>
-                                <th>Price</th>
-                                <th>Status</th>
+                                <th>&nbsp&nbsp&nbsp&nbspPrice</th>
+                                <th>Current Status</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -46,16 +46,11 @@
                             @foreach($rooms as $room)
                                 <tr>
                                     <td>{{$room->name}}</td>
-                                    <td>{{$room->price}}</td>
-                                    <th>{{$room->occupants}} / {{$room->pax}} </th>
-                                @if(($room->occupants) == $room->pax)
-                                    <td>Currently not available</td>
-                                    @else
+                                    <td>Php {{$room->price}}.00</td>
+                                    <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$room->occupants}} (of {{$room->pax}})</th>
                                     <td>
                                         <a href="/reservations/create?type={{$pageName}}&room_id={{$room->id}}"
-                                           class="btn btn-warning">Make
-                                            Reservation</a></td>
-                                            @endif
+                                           class="btn btn-warning">Reserve this room</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

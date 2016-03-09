@@ -43,16 +43,13 @@
                 <a href="{{ action('AdminController@index') }}">Latest Reservations Entered</a>
             </li>
             <li>
-                <a href="#">Upcoming Reservations</a>
-            </li>
-            <li>
-                <a href="#">Pending Reservations</a>
-            </li>
-            <li>
                 <a href="{{ action('AdminController@confirmed') }}">Confirmed Reservations</a>
             </li>
             <li>
-                <a href="{{ action('AdminController@cancelled') }}">Cacelled</a>
+                <a href="{{ action('AdminController@cancelled') }}">Cancelled</a>
+            </li>
+            <li>
+                <a href="{{ action('AdminController@finished') }}">Finished Reservations</a>
             </li>
             <li>
                 <a href="#">Last 3 Months Report</a>

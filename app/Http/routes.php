@@ -28,6 +28,7 @@ Route::get('home', 'HomeController@index');
 Route::get('admin/dashboard', 'AdminController@index');
 Route::get('admin/dashboard/confirmed', 'AdminController@confirmed');
 Route::get('admin/dashboard/cancelled', 'AdminController@cancelled');
+Route::get('admin/dashboard/finished', 'AdminController@finished');
 
 /**
  * Room routes
@@ -45,10 +46,10 @@ Route::post('reservations', 'ReservationController@store');
 Route::get('reservation/confirm/{id}', 'ReservationController@confirm')->where('id', '[0-9]+');
 //cancelled route
 Route::get('reservation/cancelled/{id}', 'ReservationController@cancelled')->where('id', '[0-9]+');
-
-Route::get('tosendtwo', 'MasterController@tosend_two');
-
-Route::get('check', 'RoomsController@checkAvailability');
+//finished route
+Route::get('reservation/finished/{id}', 'ReservationController@finished')->where('id', '[0-9]+');
+//get startDate; endDate;
+Route::post('check', 'RoomsController@checkAvailability');
 
 Route::controllers([
   'auth'     => 'Auth\AuthController',

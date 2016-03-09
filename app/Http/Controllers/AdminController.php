@@ -43,4 +43,9 @@ class AdminController extends Controller
 
     return view('admin.cancelled')->with(compact('reservations'));
   }
+  public function finished() {
+    $reservations = Reservation::where('status', 'done')->get();
+
+    return view('admin.finished')->with(compact('reservations'));
+  }
 }
