@@ -36,11 +36,6 @@ class AdminController extends Controller
     $reservations = Reservation::where('status', 'accepted')->get();
 
     return view('admin.confirmed')->with(compact('reservations'));
-    //Send mail
-  $data = [];
-  Mail::send('admin.confirmed', $data, function($message) {
-    $message->to('mprawrr@live.com','MPRawrr')->subject('USeP Dormitel Reservation Details');
-  });
   }
 
    public function cancelled() {

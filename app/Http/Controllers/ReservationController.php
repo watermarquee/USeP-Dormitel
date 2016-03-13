@@ -105,9 +105,11 @@ public function confirm($id) {
   $room->occupants=$room->occupants+1;
   $room->save();
   //Send mail
+  $reservations = Reservation::where('status', 'accepted')->get();
+
   $data = [];
-  Mail::send('admin.confirmed', $data, function($message) {
-    $message->to('mprawrr@live.com','MPRawrr')->subject('USeP Dormitel Reservation Details');
+  Mail::send('emails.mail_confirmed', ['reservation' => $confirm], function($message) use ($confirm) {
+    $message->to($confirm->person->email, $confirm->person->first_name)->subject('USeP Dormitel Reservation Details');
   });
   return redirect('admin/dashboard');
 }
