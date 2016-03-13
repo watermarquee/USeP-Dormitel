@@ -38,7 +38,7 @@
                             <tr>
                                 <th>Room No.</th>
                                 <th>&nbsp&nbsp&nbsp&nbspPrice</th>
-                                <th>Current Status</th>
+                                <th>Current Occupants</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -47,7 +47,8 @@
                                 <tr>
                                     <td>{{$room->name}}</td>
                                     <td>Php {{$room->price}}.00</td>
-                                    <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$room->occupants}} (of {{$room->pax}})</th>
+
+                                    <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ $room->currentOccupants() }} (of {{$room->pax}})</th>
                                     <td>
                                         <a href="/reservations/create?type={{$pageName}}&room_id={{$room->id}}"
                                            class="btn btn-warning">Reserve this room</a></td>

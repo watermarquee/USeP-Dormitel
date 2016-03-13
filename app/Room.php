@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use \Carbon\Carbon;
 
 class Room extends Model
 {
@@ -25,5 +26,11 @@ class Room extends Model
   public function reservations()
   {
     return $this->hasMany('App\Reservation');
+  }
+
+  public function currentOccupants() {
+    $carbon_now = Carbon::now()->toDateString();
+    $currentOccupants = Reservation::where('room_id', $this->id)->where('status', 'accepted')->where('start_date','<=',$carbon_now)->where('end_date','>=',$carbon_now)->count();
+    return $currentOccupants;
   }
 }

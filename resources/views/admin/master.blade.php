@@ -12,7 +12,7 @@
     <!-- Bootstrap Core CSS -->
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" media="screen"
-          href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+          href="/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
     <link href="/css/simple-sidebar.css" rel="stylesheet">
@@ -72,9 +72,9 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="//code.jquery.com/jquery.js"></script>
+<script src="/jquery/jquery-2.1.3.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <!-- Menu Toggle Script -->
 <script>
     $("#menu-toggle").click(function (e) {

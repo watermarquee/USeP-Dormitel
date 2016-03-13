@@ -14,6 +14,12 @@ class HomeController extends Controller
   |
   */
 
+  protected $mailer;
+
+  function _construct(MailQueue $mailer) {
+    $this->mailer = $mailer;
+  }
+
   /**
    * Show the application dashboard to the user.
    *

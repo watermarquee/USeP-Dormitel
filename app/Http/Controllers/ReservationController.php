@@ -1,10 +1,12 @@
-<?php namespace App\Http\Controllers;
+<?php 
 
+namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Person;
 use App\Reservation;
 use App\Room;
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Http\Request;
 
@@ -83,7 +85,7 @@ class ReservationController extends Controller
 
       $reservation->room_id = (int)$request->input('room_id');
       if ($reservation->save()) {
-        return 'Success';
+        return view('confirmation');
         //TODO redirect to a page with success message
       } else {
         return 'Fail reservation';
@@ -102,9 +104,11 @@ public function confirm($id) {
   $room = $confirm->room;
   $room->occupants=$room->occupants+1;
   $room->save();
-  //get room ID
-
-
+  //Send mail
+  $data = [];
+  Mail::send('admin.confirmed', $data, function($message) {
+    $message->to('mprawrr@live.com','MPRawrr')->subject('USeP Dormitel Reservation Details');
+  });
   return redirect('admin/dashboard');
 }
 
@@ -112,14 +116,14 @@ public function cancelled($id) {
   $cancel = Reservation::find($id);
   $cancel->status = Reservation::STATUS_CANCELLED;
   $cancel->save();
-  return redirect('admin/dashboard/cancelled');
+  return redirect('admin/dashboard');
 }
 
 public function finishedReserved($id) {
   $done = Reservation::find($id);
   $done->status = Reservation::STATUS_DONE;
   $done->save();
-  return redirect('admin/dashboard/finished');
+  return redirect('admin/dashboard');
 }
   /**
    * Display the specified resource.

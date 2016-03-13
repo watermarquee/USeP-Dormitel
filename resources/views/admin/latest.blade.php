@@ -11,9 +11,13 @@
 						<tr>
 							<th>Reservation ID</th>
 							<th>Client</th>
+							<th>Address</th>
+							<th>e-Mail</th>
+							<th>Contact Info</th>
 							<th>Room Type</th>
 							<th>Room No.</th>
 							<th>Rental Time</th>
+							<th>Additional Notes</th>
 							<th>Status</th>
 							<th></th>
 						</tr>
@@ -24,9 +28,13 @@
 						<tr>
 							<td>{{ $reservation->person->getUNiqueID() }}</td>
 							<td>{{ $reservation->person->getFullName() }}</td>
+							<td>{{ $reservation->person->address }}</td>
+							<td>{{ $reservation->person->email }}</td>
+							<td>{{ $reservation->person->phone }}</td>
 							<td>{{ $reservation->room->type }}</td>
 							<td>{{ $reservation->room->name }}</td>
 							<td>{{ $reservation->start_date }} — {{ $reservation->end_date }}</td>
+							<td>{{ $reservation->notes }}</td>
 							<td>{{ $reservation->status }}</td>
 							<td>
 								<a class="btn btn-success btn-xs" href="{{action('ReservationController@confirm', $reservation->id)}}" role="button">Confirm</a>

@@ -34,7 +34,7 @@
           </div>
       </div>
       <div class='col-md-3'>
-        <button type="submit" class="btn btn-large btn-block btn-default">Check Availability<span
+        <button type="submit" class="btn btn-large btn-block btn-default">Check Conflict<span
             class="glyphicon glyphicon-eye-open" style="margin-left: 10px"></span>
         </button>
     </div>
@@ -72,7 +72,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">{{$input['start_date']}}</h4>
+                <h4 class="modal-title" align="center"><strong>CONFLICTS</strong></h4>
             </div>
             <div class="modal-body">
                 <div class="table-responsive">          
@@ -81,6 +81,7 @@
                             <tr>
                                 <th>Room No.</th>
                                 <th>Room Type</th>
+                                <th>Person ID</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -88,6 +89,7 @@
                             <tr>
                                 <td>{{ $date->room->name }}</td>
                                 <td>{{ $date->room->type }}</td>
+                                <td>{{ $date->person_id }}</td>
                             </tr>
                             @endforeach
                         </tbody>
