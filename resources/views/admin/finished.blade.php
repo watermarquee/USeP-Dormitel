@@ -5,7 +5,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1>Confirmed Reservations</h1>
+				<h1>Finished Reservations</h1>
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -39,9 +39,9 @@
 					@endforeach
 				</tbody>
 			</table>
-		</p>
-		<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Hide Menu</a>
+		</p><?php echo $reservations->render();?>
 	</div>
+	<a href="#menu-toggle" class="btn btn-default" id="menu-toggle" style="margin-left:15px;">Hide Menu</a>
 </div>
 </div>
 </div>

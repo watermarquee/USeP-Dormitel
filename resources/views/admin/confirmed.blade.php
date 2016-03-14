@@ -22,7 +22,6 @@
 						</tr>
 					</thead>
 					<tbody>
-
 					@foreach($reservations as $reservation)
 						<tr>
 							<td>{{ $reservation->person->getUNiqueID() }}</td>
@@ -40,8 +39,9 @@
 				</tbody>
 			</table>
 		</p>
-		<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Hide Menu</a>
+		<?php echo $reservations->render();?>
 	</div>
+	<a href="#menu-toggle" class="btn btn-default" id="menu-toggle" style="margin-left:15px;">Hide Menu</a>
 </div>
 </div>
 </div>

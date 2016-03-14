@@ -106,8 +106,6 @@ public function confirm($id) {
   $room->save();
   //Send mail
   $reservations = Reservation::where('status', 'accepted')->get();
-
-  $data = [];
   Mail::send('emails.mail_confirmed', ['reservation' => $confirm], function($message) use ($confirm) {
     $message->to($confirm->person->email, $confirm->person->first_name)->subject('USeP Dormitel Reservation Details');
   });
@@ -118,6 +116,10 @@ public function cancelled($id) {
   $cancel = Reservation::find($id);
   $cancel->status = Reservation::STATUS_CANCELLED;
   $cancel->save();
+  //Send mail
+  Mail::send('emails.mail_declined', ['reservation' => $cancel], function($message) use ($cancel) {
+    $message->to($cancel->person->email, $cancel->person->first_name)->subject('USeP Dormitel Reservation Details');
+  });
   return redirect('admin/dashboard');
 }
 
@@ -127,6 +129,7 @@ public function finishedReserved($id) {
   $done->save();
   return redirect('admin/dashboard');
 }
+
   /**
    * Display the specified resource.
    *
