@@ -128,7 +128,7 @@ class RoomsController extends Controller
     $input = $request->all();
 
     $rooms = Room::all();
-    $check_date = Reservation::whereBetween('start_date',[$input['start_date'], $input['end_date']])->whereNotBetween('end_date',[$input['start_date'], $input['end_date']])->get();
+    $check_date = Reservation::whereBetween('start_date',[$input['start_date'], $input['end_date']])->get();
     return view('welcome')->with(compact('check_date', 'input'));
   }
 }
