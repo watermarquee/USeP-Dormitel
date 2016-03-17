@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel {
 
 	/**
 	 * Define the application's command schedule.
-	 *
+	 * call this ' * * * * * php /path/to/artisan schedule:run 1>> /dev/null 2>&1 '
 	 * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
 	 * @return void
 	 */

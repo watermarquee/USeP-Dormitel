@@ -129,10 +129,10 @@
 @yield('tummy')
         <!--footer start here-->
 <div class="filler footer-content">
-    Copyright © 2016, Mark Lawrence Mangawang Rights
-    Reserved.Privacy | Terms
+    Copyright © 2016, Institute of Computing, All Rights
+    Reserved. Privacy | Terms
     and
-    conditions
+    Conditions
 </div>
 
 

@@ -1,12 +1,11 @@
-<?php 
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Person;
 use App\Reservation;
 use App\Room;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -97,85 +96,71 @@ class ReservationController extends Controller
     }
   }
 
-public function confirm($id) {
-  $confirm = Reservation::find($id);
-  $confirm->status = Reservation::STATUS_ACCEPTED;
-  $confirm->save();
-  $room = $confirm->room;
-  $room->occupants=$room->occupants+1;
-  $room->save();
-  //Send mail
-  $reservations = Reservation::where('status', 'accepted')->get();
-  Mail::send('emails.mail_confirmed', ['reservation' => $confirm], function($message) use ($confirm) {
-    $message->to($confirm->person->email, $confirm->person->first_name)->subject('USeP Dormitel Reservation Details');
-  });
-  return redirect('admin/dashboard');
-}
-
-public function cancelled($id) {
-  $cancel = Reservation::find($id);
-  $cancel->status = Reservation::STATUS_CANCELLED;
-  $cancel->save();
-  //Send mail
-  Mail::send('emails.mail_declined', ['reservation' => $cancel], function($message) use ($cancel) {
-    $message->to($cancel->person->email, $cancel->person->first_name)->subject('USeP Dormitel Reservation Details');
-  });
-  return redirect('admin/dashboard');
-}
-
-public function finishedReserved($id) {
-  $done = Reservation::find($id);
-  $done->status = Reservation::STATUS_DONE;
-  $done->save();
-  return redirect('admin/dashboard');
-}
-
-  /**
-   * Display the specified resource.
-   *
-   * @param  int $id
-   *
-   * @return Response
-   */
-  public function show($id)
-  {
-    //
+  public function confirm($id) {
+    $confirm = Reservation::find($id);
+    $confirm->status = Reservation::STATUS_ACCEPTED;
+    $confirm->save();
+    $room = $confirm->room;
+    $room->occupants=$room->occupants+1;
+    $room->save();
+    //Send mail
+    $reservations = Reservation::where('status', 'accepted')->get();
+    Mail::send('emails.mail_confirmed', ['reservation' => $confirm], function($message) use ($confirm) {
+      $message->to($confirm->person->email, $confirm->person->first_name)->subject('USeP Dormitel Reservation Details');
+    });
+    return redirect('admin/dashboard');
   }
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int $id
-   *
-   * @return Response
-   */
-  public function edit($id)
-  {
-    //
+  public function cancelled($id) {
+    $cancel = Reservation::find($id);
+    $cancel->status = Reservation::STATUS_CANCELLED;
+    $cancel->save();
+    //Send mail
+    Mail::send('emails.mail_declined', ['reservation' => $cancel], function($message) use ($cancel) {
+      $message->to($cancel->person->email, $cancel->person->first_name)->subject('USeP Dormitel Reservation Details');
+    });
+    return redirect('admin/dashboard');
   }
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  int $id
-   *
-   * @return Response
-   */
-  public function update($id)
-  {
-    //
+  public function finished($id) {
+    $done = Reservation::find($id);
+    $done->status = Reservation::STATUS_DONE;
+    $done->save();
+    return redirect('admin/dashboard');
   }
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int $id
-   *
-   * @return Response
-   */
-  public function destroy($id)
-  {
-    //
-  }
+  public function summary() {
 
+    $reservations = Reservation::where('status', Reservation::STATUS_ACCEPTED)->get();
+
+    $total_earnings = 0;
+ 
+    $data = [];
+
+    foreach ($reservations as $reservation) {
+
+        $days = new Carbon($reservation->start_date);
+        $days = $days->diffInDays(new Carbon($reservation->end_date)); 
+
+        $total_price = (int)$days * (float)$reservation->price;
+        $total_earnings += $total_price;
+    } 
+      $reservations = Reservation::where('status', Reservation::STATUS_ACCEPTED)->paginate(10);
+
+    $data = [];
+
+    foreach ($reservations as $reservation) {
+
+        $days = new Carbon($reservation->start_date);
+        $days = $days->diffInDays(new Carbon($reservation->end_date)); 
+
+        $total_price = (int)$days * (float)$reservation->price;
+        $all_data[] = [
+          'person' => $reservation->person->first_name . ' ' . $reservation->person->last_name,
+          'days' => $days,
+          'total_price' => $total_price,
+        ];
+    } 
+    return view('admin.summary')->with('all_data',$all_data)->with('reservations', $reservations)->with('t_e', $total_earnings);
+  }
 }

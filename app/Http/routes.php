@@ -51,6 +51,8 @@ Route::get('reservation/cancelled/{id}', 'ReservationController@cancelled')->whe
 Route::get('reservation/finished/{id}', 'ReservationController@finished')->where('id', '[0-9]+');
 //get startDate; endDate;
 Route::post('check', 'RoomsController@checkAvailability');
+//summary
+Route::get('admin/dashboard/summary', 'ReservationController@summary');
 
 Route::controllers([
   'auth'     => 'Auth\AuthController',

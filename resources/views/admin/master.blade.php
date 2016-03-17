@@ -52,10 +52,7 @@
                 <a href="{{ action('AdminController@finished') }}">Finished Reservations</a>
             </li>
             <li>
-                <a href="#">Last 3 Months Report</a>
-            </li>
-            <li>
-                <a href="#">Annual Report</a>
+                <a href="{{ action('ReservationController@summary') }}">Summary Reports</a>
             </li>
             <li>
                 <a href="/auth/logout">Logout</a>
