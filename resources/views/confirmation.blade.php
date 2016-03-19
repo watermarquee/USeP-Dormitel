@@ -45,8 +45,9 @@
         <div class="container">
             <div class="content">
                 <div class="title">THANK YOU!</div>
-                <a href="/">Home</a>
             </div>
+            <p>We'll send you an e-mail after we confirmed your request :)</p>
+                <a href="/">Home</a>
         </div>
     </body>
 </html>

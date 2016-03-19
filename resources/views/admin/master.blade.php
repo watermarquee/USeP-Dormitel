@@ -52,7 +52,7 @@
                 <a href="{{ action('AdminController@finished') }}">Finished Reservations</a>
             </li>
             <li>
-                <a href="{{ action('ReservationController@summary') }}">Summary Reports</a>
+                <a href="{{ action('ReservationController@summary') }}">Earnings</a>
             </li>
             <li>
                 <a href="/auth/logout">Logout</a>

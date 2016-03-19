@@ -3,7 +3,7 @@
 use App\Http\Requests;
 use App\Reservation;
 use App\Http\Controllers\Controller;
-
+use Excel;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller

@@ -53,6 +53,7 @@ Route::get('reservation/finished/{id}', 'ReservationController@finished')->where
 Route::post('check', 'RoomsController@checkAvailability');
 //summary
 Route::get('admin/dashboard/summary', 'ReservationController@summary');
+Route::get('admin/dashboard/excel', 'AdminController@excel');
 
 Route::controllers([
   'auth'     => 'Auth\AuthController',

@@ -39,13 +39,13 @@ class ReservationController extends Controller
 
     switch ($type) {
       case Room::TYPE_AFFORDABLE:
-        $title = 'Affordable Room';
+        $title = 'Small Room';
         break;
       case Room::TYPE_MIDDLE_CLASS:
-        $title = 'Middle Class Room';
+        $title = 'Big Class Room';
         break;
       case Room::TYPE_VIP:
-        $title = 'V.I.P Room';
+        $title = 'V.I.P';
         break;
     }
 
@@ -144,22 +144,13 @@ class ReservationController extends Controller
 
         $total_price = (int)$days * (float)$reservation->price;
         $total_earnings += $total_price;
-    } 
-      $reservations = Reservation::where('status', Reservation::STATUS_ACCEPTED)->paginate(10);
 
-    $data = [];
-
-    foreach ($reservations as $reservation) {
-
-        $days = new Carbon($reservation->start_date);
-        $days = $days->diffInDays(new Carbon($reservation->end_date)); 
-
-        $total_price = (int)$days * (float)$reservation->price;
         $all_data[] = [
-          'person' => $reservation->person->first_name . ' ' . $reservation->person->last_name,
-          'days' => $days,
-          'total_price' => $total_price,
-        ];
+        'person' => $reservation->person->first_name . ' ' . $reservation->person->last_name,
+        'days' => $days,
+        'total_price' => $total_price,
+       ];
+
     } 
     return view('admin.summary')->with('all_data',$all_data)->with('reservations', $reservations)->with('t_e', $total_earnings);
   }

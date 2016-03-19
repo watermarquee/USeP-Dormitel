@@ -12,7 +12,8 @@
 		"phpspec/phpspec": "~2.1",
 		"guzzlehttp/guzzle": "~5.0",
 		"laravelcollective/html": "~5.0",
-		"maatwebsite/excel": "~2.1.0"
+		"maatwebsite/excel": "~2.1.0",
+		"barryvdh/laravel-dompdf": "0.6.*"
 	},
 	"autoload": {
 		"classmap": [

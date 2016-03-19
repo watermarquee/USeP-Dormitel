@@ -26,37 +26,47 @@
             <div class="item">
                 <h2>{{$title}}</h2>
                 <img src="/images/{{$imageUrl}}">
-				<span class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident pariatur,
-				veritatis, ducimus quidem doloribus distinctio officia dignissimos repellendus itaque, est id adipisci
-				earum perspiciatis.
-		
-                    @if(count($rooms) == 0)
-                        No rooms available.
-                    @else
+				<span class="caption">
+    
+                    <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Max. Capacity</th>
+                            <th>Air Conditioned</th>
+                            <th>Wi-Fi Enabled</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ $px }}</td>
+                            <td>☑ YES</td>
+                            <td>☑ YES</td>
+                        </tr>
+                </tbody>
+            </table>
+                    <h3></h3>
                         <table class="table table-hover">
                             <thead>
                             <tr>
                                 <th>Room No.</th>
                                 <th>&nbsp&nbsp&nbsp&nbspPrice</th>
-                                <th>Current Occupants</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($rooms as $room)
                                 <tr>
+                             
                                     <td>{{$room->name}}</td>
                                     <td>Php {{$room->price}}.00</td>
-
-                                    <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ $room->currentOccupants() }} (of {{$room->pax}})</th>
                                     <td>
+                                    <!-- Get Room Type only to display at Modal -->
                                         <a href="/reservations/create?type={{$pageName}}&room_id={{$room->id}}"
-                                           class="btn btn-warning">Reserve this room</a></td>
+                                           class="btn btn-warning">Book NOW!</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                    @endif
 				</span>
             </div>
         </div>

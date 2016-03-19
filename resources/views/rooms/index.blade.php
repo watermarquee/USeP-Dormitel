@@ -23,7 +23,7 @@
                 <th scope="row"></th>
                 <td><img src="/images/affordable1.jpg" vspace="22px" hspace="15px"
                          style="width:150px;height:150px;border:0;"></td>
-                <td><h1>Affordable Room</h1>
+                <td><h1>Small Room</h1>
 
                     <p style="text-align:justify;text-justify:inter-word">Lorem ipsum dolor sit
                         amet, consectetur adipisicing elit. Laboriosam consectetur,
@@ -38,7 +38,7 @@
                 <th scope="row"></th>
                 <td><img src="/images/middleclass1.jpg" vspace="22px" hspace="15px"
                          style="width:150px;height:150px;border:0;"></td>
-                <td><h1>Middle Class Room</h1>
+                <td><h1>Big Room</h1>
 
                     <p style="text-align:justify;text-justify:inter-word">Lorem ipsum dolor sit
                         amet, consectetur adipisicing elit. Laboriosam consectetur,
@@ -53,7 +53,7 @@
                 <th scope="row"></th>
                 <td><img src="/images/vip1.jpg" vspace="22px" hspace="15px"
                          style="width:150px;height:150px;border:0;"></td>
-                <td><h1>V.I.P. Room</h1>
+                <td><h1>V.I.P.</h1>
 
                     <p style="text-align:justify;text-justify:inter-word">Lorem ipsum dolor sit
                         amet, consectetur adipisicing elit. Laboriosam consectetur,

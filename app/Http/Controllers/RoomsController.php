@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use \Carbon\Carbon;
 use App\Room;
 use App\Reservation;
 use Illuminate\Http\Request;
@@ -26,22 +26,25 @@ class RoomsController extends Controller
 
     switch ($type) {
       case Room::TYPE_AFFORDABLE:
-        $title    = 'Affordable Room';
+        $title    = 'Small Room';
         $imageUrl = 'affordable2.jpg';
+        $px       = '5';
         break;
       case Room::TYPE_MIDDLE_CLASS:
-        $title    = 'Middle Class Room';
+        $title    = 'Big Room';
         $imageUrl = 'middleclass2.jpg';
+        $px       = '10';
         break;
       case Room::TYPE_VIP:
-        $title    = 'V.I.P Room';
+        $title    = 'V.I.P';
         $imageUrl = 'vip2.jpg';
+        $px       = '2';
         break;
     }
 
     $rooms = Room::where('type', $type)->where('availability', Room::AVAILABILITY_VACANT)->get();
 
-    return view('rooms.page')->with('title', $title)->with('imageUrl', $imageUrl)->with('pageName', $type)->with('rooms', $rooms);
+    return view('rooms.page')->with('title', $title)->with('imageUrl', $imageUrl)->with('px', $px)->with('pageName', $type)->with('rooms', $rooms);
 
   }
 
@@ -52,10 +55,23 @@ class RoomsController extends Controller
    */
   public function checkAvailability(Request $request) {
     //add params start_date, end_date
+    //Start date_input
     $input = $request->all();
-
+    $currentOccupants = [];
     $rooms = Room::all();
     $check_date = Reservation::whereBetween('start_date',[$input['start_date'], $input['end_date']])->get();
-    return view('welcome')->with(compact('check_date', 'input'));
+    foreach ($rooms as $index => $room) {
+      # code...
+      $currentOccupants[$index] = Reservation::where('room_id',$room->id)
+                                   ->where('status', 'accepted')
+                                   ->where('start_date','<=',[$input['start_date']])
+                                   ->where('end_date','>=',[$input['end_date']])->count();
+    }
+    // //EOF date_input
+
+    //display all_table
+    $all_table = Room::where('availability', 'vacant')->get();
+    // return view('welcome')->with('table',$table);
+    return view('welcome')->with(compact('check_date', 'input', 'all_table', 'currentOccupants'));
   }
 }

@@ -5,7 +5,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1>Summary Reports</h1>
+				<h1>Earnings Overview</h1>
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -26,7 +26,6 @@
 				</tbody>
 			</table>
 		</p>
-		<?php echo $reservations->render();?>
 			<!-- Total -->
 		<h3>Current Total Earning Estimate</h3>
 		<table class="table table-bordered">
@@ -35,7 +34,7 @@
 							 <tfoot>
 							    <tr>
 							      <th>Estimated Total Sum:</th>
-							      <th>Php {{ $t_e }}.00</th>
+							      <th style="color:green;">Php {{ $t_e }}.00</th>
 							    </tr>
 							  </tfoot>
 							  <!-- End Footer -->

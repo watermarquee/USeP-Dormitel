@@ -34,7 +34,7 @@
           </div>
       </div>
       <div class='col-md-3'>
-        <button type="submit" class="btn btn-large btn-block btn-default">Check Conflict<span
+        <button type="submit" class="btn btn-large btn-block btn-default">Check Availability<span
             class="glyphicon glyphicon-eye-open" style="margin-left: 10px"></span>
         </button>
     </div>
@@ -47,14 +47,14 @@
         style="width:250px;height:250px;border:0;">
         <a class="btn btn-large btn-block btn-danger"
         href="/rooms/page/{{\App\Room::TYPE_AFFORDABLE}}" role="button"
-        style="border-radius:0">Affordable</a>
+        style="border-radius:0">Small Room</a>
     </div>
     <div class="col-md-4">
         <img src='/images/middleclass1.jpg' alt="Image" vspace="20" hspace="15"
         style="width:250px;height:250px;border:0;">
         <a class="btn btn-large btn-block btn-danger"
         href="/rooms/page/{{\App\Room::TYPE_MIDDLE_CLASS}}" role="button"
-        style="border-radius:0">Middle class</a>
+        style="border-radius:0">Big Room</a>
     </div>
     <div class="col-md-4">
         <img src='/images/vip1.jpg' alt="Image" vspace="20" hspace="15"
@@ -72,7 +72,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title" align="center"><strong>CONFLICTS</strong></h4>
+                <h4 class="modal-title" align="center">Availability of Rooms from <strong style="color:#800000;"><u>Picked Date</u></strong></h4>
             </div>
             <div class="modal-body">
                 <div class="table-responsive">          
@@ -81,16 +81,30 @@
                             <tr>
                                 <th>Room No.</th>
                                 <th>Room Type</th>
-                                <th>Person ID</th>
+                                <th>Price</th>
+                                <th>PAX</th>
+                                <th>Occupants</th>
+                                <th>Availability</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($check_date as $date)
+                            @foreach ($all_table as $index => $row)
+                            
                             <tr>
-                                <td>{{ $date->room->name }}</td>
-                                <td>{{ $date->room->type }}</td>
-                                <td>{{ $date->person_id }}</td>
+                                <td>{{ $row->name }}</td>
+                                <td>{{ $row->type }}</td>
+                                <td>{{ $row->price }}</td>
+                                <td>{{ $row->pax }}</td>
+                                <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$currentOccupants[$index]}}</td>
+                                @if($currentOccupants[$index]==$row->pax)
+                                <td><p style="color:red;">Room is full</p></td>
+                                    @else
+                                <td>{{($row->pax) - ($currentOccupants[$index])}}</a></td>
+                                <td><a class="btn btn-primary btn-xs" href="/" role="button">Make Reservation</a></td>
+                                @endif
                             </tr>
+                             
                             @endforeach
                         </tbody>
                     </table>
