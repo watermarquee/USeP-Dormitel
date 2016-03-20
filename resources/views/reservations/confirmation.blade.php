@@ -15,8 +15,6 @@
                 padding: 0;
                 width: 100%;
                 display: table;
-                font-weight: 100;
-                font-family: 'Lato';
             }
 
             .container {
@@ -28,6 +26,8 @@
             .content {
                 text-align: center;
                 display: inline-block;
+                font-weight: 100;
+                font-family: 'Lato';
             }
 
             .title {
@@ -44,10 +44,12 @@
     <body>
         <div class="container">
             <div class="content">
+            <a href="/home">
+                 <img src="/images/logo.png" alt="image" style='width:200px;height:200px'>
+            </a><hr>
                 <div class="title">THANK YOU!</div>
             </div>
             <p>We'll send you an e-mail after we confirmed your request :)</p>
-                <a href="/">Home</a>
         </div>
     </body>
 </html>
