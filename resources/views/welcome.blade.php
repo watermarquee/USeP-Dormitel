@@ -5,6 +5,10 @@
     img {
         object-fit: cover;
     }
+    .btn-room {
+        width: 94%;
+        margin: 0 9px;
+    }
 </style>
 <div class="content">
     <h1>Dormitel Room Types</h1>
@@ -12,8 +16,8 @@
     <form method="POST" action="{{url('check')}}" id="eventForm">
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
-        <div class="container">
-            <div class='col-md-3'>
+        <div class="row">
+            <div class='col-md-4'>
                 <div class="form-group">
                     <div class='input-group date' id='startDatePicker'>
                         <input type='text' class="form-control" placeholder="Start Date" name="start_date"/>
@@ -23,7 +27,7 @@
                   </div>
               </div>
           </div>
-          <div class='col-md-3'>
+          <div class='col-md-4'>
             <div class="form-group">
                 <div class='input-group date' id='endDatePicker'>
                     <input type='text' class="form-control" placeholder="End Date" name="end_date"/>
@@ -33,7 +37,7 @@
               </div>
           </div>
       </div>
-      <div class='col-md-3'>
+      <div class='col-md-4'>
         <button type="submit" class="btn btn-large btn-block btn-default">Check Availability<span
             class="glyphicon glyphicon-eye-open" style="margin-left: 10px"></span>
         </button>
@@ -41,29 +45,29 @@
 </div>
 </form>
 
-<div class="row">
-    <div class="col-md-4">
-        <img src='/images/affordable1.jpg' alt="Image" vspace="20" hspace="15"
-        style="width:250px;height:250px;border:0;">
-        <a class="btn btn-large btn-block btn-danger"
-        href="/rooms/page/{{\App\Room::TYPE_AFFORDABLE}}" role="button"
-        style="border-radius:0">Small Room</a>
+    <div class="row">
+        <div class="col-md-4">
+            <img src='/images/affordable1.jpg' alt="Image" vspace="20" hspace="10"
+            style="width:250px;height:250px;border:0;">
+            <a class="btn btn-large btn-danger btn-room"
+            href="/rooms/page/{{\App\Room::TYPE_AFFORDABLE}}" role="button"
+            style="border-radius:0">Small Room</a>
+        </div>
+        <div class="col-md-4">
+            <img src='/images/middleclass1.jpg' alt="Image" vspace="20" hspace="10"
+            style="width:250px;height:250px;border:0;">
+            <a class="btn btn-large btn-danger btn-room"
+            href="/rooms/page/{{\App\Room::TYPE_MIDDLE_CLASS}}" role="button"
+            style="border-radius:0">Big Room</a>
+        </div>
+        <div class="col-md-4">
+            <img src='/images/vip1.jpg' alt="Image" vspace="20" hspace="10"
+            style="width:250px;height:250px;border:0;">
+            <a class="btn btn-large btn-danger btn-room"
+            href="/rooms/page/{{\App\Room::TYPE_VIP}}" role="button"
+            style="border-radius:0">V.I.P.</a>
+        </div>
     </div>
-    <div class="col-md-4">
-        <img src='/images/middleclass1.jpg' alt="Image" vspace="20" hspace="15"
-        style="width:250px;height:250px;border:0;">
-        <a class="btn btn-large btn-block btn-danger"
-        href="/rooms/page/{{\App\Room::TYPE_MIDDLE_CLASS}}" role="button"
-        style="border-radius:0">Big Room</a>
-    </div>
-    <div class="col-md-4">
-        <img src='/images/vip1.jpg' alt="Image" vspace="20" hspace="15"
-        style="width:250px;height:250px;border:0;">
-        <a class="btn btn-large btn-block btn-danger"
-        href="/rooms/page/{{\App\Room::TYPE_VIP}}" role="button"
-        style="border-radius:0">V.I.P.</a>
-    </div>
-</div>
 </div>
 
 @if(isset($check_date) && isset($input))
@@ -99,12 +103,12 @@
                                 <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$currentOccupants[$index]}}</td>
                                 @if($currentOccupants[$index]==$row->pax)
                                 <td><p style="color:red;">Room is full</p></td>
-                                    @else
+                                @else
                                 <td>{{($row->pax) - ($currentOccupants[$index])}}</a></td>
-                                <td><a class="btn btn-primary btn-xs" href="/" role="button">Make Reservation</a></td>
+                                <td><a class="btn btn-primary btn-xs" href="/reservations/create?type={{$row->type}}&room_id={{$row->id}}" role="button">Make Reservation</a></td>
                                 @endif
                             </tr>
-                             
+                            
                             @endforeach
                         </tbody>
                     </table>

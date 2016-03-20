@@ -12,6 +12,7 @@
         margin: 0;
         padding: 0;
         font-family: 'Lato', sans-serif;
+        overflow-x: hidden;
     }
 
     .hero {
@@ -63,7 +64,7 @@
     }
 
     .content {
-        padding: 20px 230px;
+        padding: 20px 180px;
         text-align: center;
         position: relative;
     }

@@ -6,6 +6,7 @@ use App\Reservation;
 use App\Room;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
+use Excel;
 
 use Illuminate\Http\Request;
 
@@ -62,8 +63,19 @@ class ReservationController extends Controller
    *
    * @return Response
    */
-  public function store(Request $request)
-  {
+  public function store(Request $request) {
+    $input = $request->all();
+    
+    $reservations_count =  Reservation::where('room_id',$input['room_id'])
+                                   ->where('status', 'accepted')
+                                   ->where('start_date','<=',[$input['start_date']])
+                                   ->where('end_date','>=',[$input['end_date']])->count();
+
+    $room = Room::find($input['room_id']);
+
+    if($reservations_count == $room->pax) {
+      return 'Room is Ful';
+    }
 
     $person             = new Person();
     $person->unique_id  = $this->quickRandom();
@@ -134,16 +146,34 @@ class ReservationController extends Controller
     $reservations = Reservation::where('status', Reservation::STATUS_ACCEPTED)->get();
 
     $total_earnings = 0;
- 
-    $data = [];
 
     foreach ($reservations as $reservation) {
 
         $days = new Carbon($reservation->start_date);
         $days = $days->diffInDays(new Carbon($reservation->end_date)); 
 
+         if($days == 0) {
+          $days = 1;
+        }
+
         $total_price = (int)$days * (float)$reservation->price;
         $total_earnings += $total_price;
+    } 
+
+    $reservations = Reservation::where('status', Reservation::STATUS_ACCEPTED)->paginate(10);
+
+    $data = [];
+
+    foreach ($reservations as $reservation) {
+
+        $days = new Carbon($reservation->start_date);
+        $days = $days->diffInDays(new Carbon($reservation->end_date));
+
+        if($days == 0) {
+          $days = 1;
+        }
+
+        $total_price = (int)$days * (float)$reservation->price;
 
         $all_data[] = [
         'person' => $reservation->person->first_name . ' ' . $reservation->person->last_name,

@@ -25,7 +25,7 @@
 					@endforeach
 				</tbody>
 			</table>
-		</p>
+		</p><?php echo $reservations->render();?>
 			<!-- Total -->
 		<h3>Current Total Earning Estimate</h3>
 		<table class="table table-bordered">
