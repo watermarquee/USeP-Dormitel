@@ -15,7 +15,7 @@
 				<div class="col-lg-12">
 					<div class="container">
 					<div style="margin-top:100px;">
-						<h3 class="modal-title" align="center"><strong>ROOM FOR THAT DATE IS ALREADY FULL</strong></h4>
+						<h3 class="modal-title" align="center"><strong>ROOM FOR THAT DATE IS ALREADY FULL</strong><img src="/images/exclamation.jpg" alt="image" style='width:30px;height:30px;margin-bottom:5px;'></h4>
 						<h4 class="modal-title" align="center">You may choose from other available rooms below:</h3> 
 					</div>
 					<div class="table-responsive">          
