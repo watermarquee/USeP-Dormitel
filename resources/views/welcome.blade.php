@@ -75,12 +75,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                 <h4 class="modal-title" align="center">Availability of Rooms from <strong style="color:#800000;"><u>Picked Date</u></strong></h4>
             </div>
             <div class="modal-body">
                 <div class="table-responsive">          
-                    <table class="table table-bordered">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Room No.</th>
