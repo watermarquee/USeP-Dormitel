@@ -80,7 +80,7 @@
             </div>
             <div class="modal-body">
                 <div class="table-responsive">          
-                    <table class="table">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Room No.</th>
@@ -103,6 +103,7 @@
                                 <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{$currentOccupants[$index]}}</td>
                                 @if($currentOccupants[$index]==$row->pax)
                                 <td><p style="color:red;">Room is full</p></td>
+                                <td>N/A</td>
                                 @else
                                 <td>{{($row->pax) - ($currentOccupants[$index])}}</a></td>
                                 <td><a class="btn btn-primary btn-xs" href="/reservations/create?type={{$row->type}}&room_id={{$row->id}}" role="button">Make Reservation</a></td>
@@ -123,9 +124,10 @@
 @endif
 
 <script type="text/javascript">
-     //Start for DateScript
+   
      $(document).ready(function() {
         $("#myModal").modal('show');
+          //Start for DateScript
         $('#startDatePicker')
         .datepicker({
             format: 'yyyy/mm/dd'

@@ -65,7 +65,8 @@ class ReservationController extends Controller
    */
   public function store(Request $request) {
     $input = $request->all();
-    
+    $currentOccupants = [];
+    $rooms = Room::all();
     $reservations_count =  Reservation::where('room_id',$input['room_id'])
                                    ->where('status', 'accepted')
                                    ->where('start_date','<=',[$input['start_date']])
@@ -73,8 +74,15 @@ class ReservationController extends Controller
 
     $room = Room::find($input['room_id']);
 
+     foreach ($rooms as $index => $roomz) {
+     $currentOccupants[$index] = Reservation::where('room_id',$roomz->id)
+                                   ->where('status', 'accepted')
+                                   ->where('start_date','<=',[$input['start_date']])
+                                   ->where('end_date','>=',[$input['end_date']])->count();
+    }
+    $all_table = Room::where('availability', 'vacant')->get();
     if($reservations_count == $room->pax) {
-      return 'Room is Ful';
+      return view('reservations.error')->with(compact('input', 'all_table', 'currentOccupants'));;
     }
 
     $person             = new Person();
@@ -96,7 +104,7 @@ class ReservationController extends Controller
 
       $reservation->room_id = (int)$request->input('room_id');
       if ($reservation->save()) {
-        return view('confirmation');
+        return view('reservations.confirmation');
         //TODO redirect to a page with success message
       } else {
         return 'Fail reservation';

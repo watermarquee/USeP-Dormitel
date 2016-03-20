@@ -32,7 +32,7 @@
                 <div class="col-xs-5 dateContainer">
                     <div class="input-group input-append date" id="startDatePicker">
                         <input type="text" class="form-control" placeholder="Start Date"
-                               name="start_date"/>
+                               name="start_date" style="border-radius:0px;"/>
                         <span class="input-group-addon add-on"><span
                                     class="glyphicon glyphicon-calendar"></span></span>
                     </div>
@@ -45,7 +45,7 @@
                 <div class="col-xs-5 dateContainer">
                     <div class="input-group input-append date" id="endDatePicker">
                         <input type="text" class="form-control" placeholder="End Date"
-                               name="end_date"/>
+                               name="end_date" style="border-radius:0px;"/>
                         <span class="input-group-addon add-on"><span
                                     class="glyphicon glyphicon-calendar"></span></span>
                     </div>
@@ -57,7 +57,7 @@
 
                 <div class="col-xs-5">
                     <input type="text" class="form-control" placeholder="First Name"
-                           name="first_name"/>
+                           name="first_name" style="border-radius:0px;"/>
                 </div>
             </div>
 
@@ -65,7 +65,7 @@
                 <label class="col-xs-3 control-label"></label>
 
                 <div class="col-xs-5">
-                    <input type="text" class="form-control" placeholder="Surname" name="last_name"/>
+                    <input type="text" class="form-control" placeholder="Surname" name="last_name" style="border-radius:0px;"/>
                 </div>
             </div>
 
@@ -73,7 +73,7 @@
                 <label class="col-xs-3 control-label"></label>
 
                 <div class="col-xs-5">
-                    <input type="text" class="form-control" placeholder="Address" name="address"/>
+                    <input type="text" class="form-control" placeholder="Address" name="address" style="border-radius:0px;"/>
                 </div>
             </div>
 
@@ -81,7 +81,7 @@
                 <label class="col-xs-3 control-label"></label>
 
                 <div class="col-xs-5">
-                    <input type="text" class="form-control" placeholder="e-Mail" name="email"/>
+                    <input type="text" class="form-control" placeholder="e-Mail" name="email" style="border-radius:0px;"/>
                 </div>
             </div>
             <div class="form-group">
@@ -89,7 +89,7 @@
 
                 <div class="col-xs-5">
                     <input type="number" class="form-control" placeholder="Contact Number"
-                           name="phone"/>
+                           name="phone" style="border-radius:0px;"/>
                 </div>
             </div>
             <div class="form-group">
@@ -97,16 +97,16 @@
 
                 <div class="col-xs-5">
                     <textarea class="form-control" placeholder="Additional Notes"
-                              name="notes"></textarea>
+                              name="notes" style="border-radius:0px;"></textarea>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-xs-5 col-xs-offset-3">
-                    <button type="submit" class="btn btn-danger">Submit</button>
+                    <button type="submit" class="btn btn-danger" style="border-radius:0px;">Submit</button>
                     <span></span>
                     <a href="/rooms">
-                        <button type="button" class="btn btn-default">Cancel</button>
+                        <button type="button" class="btn btn-default" style="border-radius:0px;">Cancel</button>
                     </a>
                 </div>
             </div>

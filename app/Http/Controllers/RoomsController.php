@@ -68,7 +68,6 @@ class RoomsController extends Controller
                                    ->where('end_date','>=',[$input['end_date']])->count();
     }
     // //EOF date_input
-
     //display all_table
     $all_table = Room::where('availability', 'vacant')->get();
     // return view('welcome')->with('table',$table);

@@ -62,7 +62,7 @@
                                     <td>
                                     <!-- Get Room Type only to display at Modal -->
                                         <a href="/reservations/create?type={{$pageName}}&room_id={{$room->id}}"
-                                           class="btn btn-warning">Book NOW!</a></td>
+                                           class="btn btn-warning" style="border-radius:0px;">Book NOW!</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
