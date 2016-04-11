@@ -126,7 +126,7 @@ class ReservationController extends Controller
     $confirm         = Reservation::find($id);
     $confirm->status = Reservation::STATUS_ACCEPTED;
 
-    if ($confirm->room->availability == Room::AVAILABILITY_VACANT) {
+    if ((int)$confirm->room->occupants < (int)$confirm->room->pax) {
       $confirm->save();
       $room            = $confirm->room;
       $room->occupants = $room->occupants + 1;
