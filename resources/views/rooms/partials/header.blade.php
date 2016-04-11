@@ -1,6 +1,6 @@
 <header class="hero">
     <div class="logo"></div>
     <div class="description">
-        USeP Dormitel
+        The University Hostel
     </div>
 </header>

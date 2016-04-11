@@ -1,6 +1,6 @@
 @extends('master')
 @section('tummy')
-    @include('rooms.partials.header')
+@include('rooms.partials.header')
     <style>
 
         img {

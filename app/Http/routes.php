@@ -30,6 +30,7 @@ Route::get('admin/dashboard', 'AdminController@index');
 Route::get('admin/dashboard/confirmed', 'AdminController@confirmed');
 Route::get('admin/dashboard/cancelled', 'AdminController@cancelled');
 Route::get('admin/dashboard/finished', 'AdminController@finished');
+Route::get('admin/dashboard/export', 'AdminController@getExcelFile');
 
 /**
  * Room routes

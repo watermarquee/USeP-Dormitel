@@ -1,18 +1,18 @@
 @extends('master')
 @section('tummy')
 @include('rooms.partials.header')
+<head>
+    <title>USeP Hostel | Home</title>
+</head>
 <style type="text/css" media="screen">
     img {
         object-fit: cover;
     }
     .btn-room {
-        width: 94%;
-        margin: 0 9px;
+        width: 100%;
     }
 </style>
 <div class="content">
-    <h1>Dormitel Room Types</h1>
-    <hr>
     <form method="POST" action="{{url('check')}}" id="eventForm">
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
@@ -42,26 +42,26 @@
             class="glyphicon glyphicon-eye-open" style="margin-left: 10px"></span>
         </button>
     </div>
-</div>
+</div><hr>
 </form>
 
     <div class="row">
         <div class="col-md-4">
-            <img src='/images/affordable1.jpg' alt="Image" vspace="20" hspace="10"
+            <img src='/images/affordable1.jpg' alt="Image" vspace="20" 
             style="width:250px;height:250px;border:0;">
             <a class="btn btn-large btn-danger btn-room"
             href="/rooms/page/{{\App\Room::TYPE_AFFORDABLE}}" role="button"
             style="border-radius:0">Small Room</a>
         </div>
         <div class="col-md-4">
-            <img src='/images/middleclass1.jpg' alt="Image" vspace="20" hspace="10"
+            <img src='/images/middleclass1.jpg' alt="Image" vspace="20"  
             style="width:250px;height:250px;border:0;">
             <a class="btn btn-large btn-danger btn-room"
             href="/rooms/page/{{\App\Room::TYPE_MIDDLE_CLASS}}" role="button"
             style="border-radius:0">Big Room</a>
         </div>
         <div class="col-md-4">
-            <img src='/images/vip1.jpg' alt="Image" vspace="20" hspace="10"
+            <img src='/images/vip1.jpg' alt="Image" vspace="20" 
             style="width:250px;height:250px;border:0;">
             <a class="btn btn-large btn-danger btn-room"
             href="/rooms/page/{{\App\Room::TYPE_VIP}}" role="button"

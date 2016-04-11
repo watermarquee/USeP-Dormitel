@@ -117,7 +117,8 @@ class ReservationController extends Controller
   }
 
   public function confirm($id) {
-    $confirm = Reservation::find($id);
+
+    $confirm = Reservation::find($id); 
     $confirm->status = Reservation::STATUS_ACCEPTED;
     $confirm->save();
     $room = $confirm->room;

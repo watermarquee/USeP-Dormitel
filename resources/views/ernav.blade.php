@@ -44,6 +44,6 @@
 <nav class="nav">
     <ul class="menu">
         <li class="item"><a href="/home">Home</a></li>
-        <li class="item"><a href="/rooms">Dormitel Rooms</a></li>
+        <li class="item"><a href="/rooms">Rooms</a></li>
     </ul>
 </nav>
