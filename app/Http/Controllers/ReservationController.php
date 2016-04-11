@@ -1,4 +1,5 @@
 <?php namespace App\Http\Controllers;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Person;
@@ -53,8 +54,10 @@ class ReservationController extends Controller
     return view('reservations.create')->with('title', $title)->with('room_id', $room_id);
   }
 
-  public static function quickRandom($length = 8) {
+  public static function quickRandom($length = 8)
+  {
     $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
     return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
   }
 
@@ -63,25 +66,26 @@ class ReservationController extends Controller
    *
    * @return Response
    */
-  public function store(Request $request) {
-    $input = $request->all();
-    $currentOccupants = [];
-    $rooms = Room::all();
-    $reservations_count =  Reservation::where('room_id',$input['room_id'])
-                                   ->where('status', 'accepted')
-                                   ->where('start_date','<=',[$input['start_date']])
-                                   ->where('end_date','>=',[$input['end_date']])->count();
+  public function store(Request $request)
+  {
+    $input              = $request->all();
+    $currentOccupants   = [];
+    $rooms              = Room::all();
+    $reservations_count = Reservation::where('room_id', $input['room_id'])
+      ->where('status', 'accepted')
+      ->where('start_date', '<=', [$input['start_date']])
+      ->where('end_date', '>=', [$input['end_date']])->count();
 
     $room = Room::find($input['room_id']);
 
-     foreach ($rooms as $index => $roomz) {
-     $currentOccupants[$index] = Reservation::where('room_id',$roomz->id)
-                                   ->where('status', 'accepted')
-                                   ->where('start_date','<=',[$input['start_date']])
-                                   ->where('end_date','>=',[$input['end_date']])->count();
+    foreach ($rooms as $index => $roomz) {
+      $currentOccupants[$index] = Reservation::where('room_id', $roomz->id)
+        ->where('status', 'accepted')
+        ->where('start_date', '<=', [$input['start_date']])
+        ->where('end_date', '>=', [$input['end_date']])->count();
     }
     $all_table = Room::where('availability', 'vacant')->get();
-    if($reservations_count == $room->pax) {
+    if ($reservations_count == $room->pax) {
       return view('reservations.error')->with(compact('input', 'all_table', 'currentOccupants'));;
     }
 
@@ -116,41 +120,53 @@ class ReservationController extends Controller
     }
   }
 
-  public function confirm($id) {
+  public function confirm($id)
+  {
 
-    $confirm = Reservation::find($id); 
+    $confirm         = Reservation::find($id);
     $confirm->status = Reservation::STATUS_ACCEPTED;
-    $confirm->save();
-    $room = $confirm->room;
-    $room->occupants=$room->occupants+1;
-    $room->save();
-    //Send mail
-    $reservations = Reservation::where('status', 'accepted')->get();
-    Mail::send('emails.mail_confirmed', ['reservation' => $confirm], function($message) use ($confirm) {
-      $message->to($confirm->person->email, $confirm->person->first_name)->subject('USeP Dormitel Reservation Details');
-    });
-    return redirect('admin/dashboard');
+
+    if ($confirm->room->availability == Room::AVAILABILITY_VACANT) {
+      $confirm->save();
+      $room            = $confirm->room;
+      $room->occupants = $room->occupants + 1;
+      $room->save();
+      //Send mail
+      $reservations = Reservation::where('status', 'accepted')->get();
+      Mail::send('emails.mail_confirmed', ['reservation' => $confirm], function ($message) use ($confirm) {
+        $message->to($confirm->person->email, $confirm->person->first_name)->subject('USeP Dormitel Reservation Details');
+      });
+
+      return redirect('admin/dashboard');
+    } else {
+      // TODO logic here
+    }
   }
 
-  public function cancelled($id) {
-    $cancel = Reservation::find($id);
+  public function cancelled($id)
+  {
+    $cancel         = Reservation::find($id);
     $cancel->status = Reservation::STATUS_CANCELLED;
     $cancel->save();
     //Send mail
-    Mail::send('emails.mail_declined', ['reservation' => $cancel], function($message) use ($cancel) {
+    Mail::send('emails.mail_declined', ['reservation' => $cancel], function ($message) use ($cancel) {
       $message->to($cancel->person->email, $cancel->person->first_name)->subject('USeP Dormitel Reservation Details');
     });
+
     return redirect('admin/dashboard');
   }
 
-  public function finished($id) {
-    $done = Reservation::find($id);
+  public function finished($id)
+  {
+    $done         = Reservation::find($id);
     $done->status = Reservation::STATUS_DONE;
     $done->save();
+
     return redirect('admin/dashboard');
   }
 
-  public function summary() {
+  public function summary()
+  {
 
     $reservations = Reservation::where('status', Reservation::STATUS_ACCEPTED)->get();
 
@@ -158,16 +174,16 @@ class ReservationController extends Controller
 
     foreach ($reservations as $reservation) {
 
-        $days = new Carbon($reservation->start_date);
-        $days = $days->diffInDays(new Carbon($reservation->end_date)); 
+      $days = new Carbon($reservation->start_date);
+      $days = $days->diffInDays(new Carbon($reservation->end_date));
 
-         if($days == 0) {
-          $days = 1;
-        }
+      if ($days == 0) {
+        $days = 1;
+      }
 
-        $total_price = (int)$days * (float)$reservation->price;
-        $total_earnings += $total_price;
-    } 
+      $total_price = (int)$days * (float)$reservation->price;
+      $total_earnings += $total_price;
+    }
 
     $reservations = Reservation::where('status', Reservation::STATUS_ACCEPTED)->paginate(10);
 
@@ -175,22 +191,23 @@ class ReservationController extends Controller
 
     foreach ($reservations as $reservation) {
 
-        $days = new Carbon($reservation->start_date);
-        $days = $days->diffInDays(new Carbon($reservation->end_date));
+      $days = new Carbon($reservation->start_date);
+      $days = $days->diffInDays(new Carbon($reservation->end_date));
 
-        if($days == 0) {
-          $days = 1;
-        }
+      if ($days == 0) {
+        $days = 1;
+      }
 
-        $total_price = (int)$days * (float)$reservation->price;
+      $total_price = (int)$days * (float)$reservation->price;
 
-        $all_data[] = [
-        'person' => $reservation->person->first_name . ' ' . $reservation->person->last_name,
-        'days' => $days,
+      $all_data[] = [
+        'person'      => $reservation->person->first_name . ' ' . $reservation->person->last_name,
+        'days'        => $days,
         'total_price' => $total_price,
-       ];
+      ];
 
-    } 
-    return view('admin.summary')->with('all_data',$all_data)->with('reservations', $reservations)->with('t_e', $total_earnings);
+    }
+
+    return view('admin.summary')->with('all_data', $all_data)->with('reservations', $reservations)->with('t_e', $total_earnings);
   }
 }
