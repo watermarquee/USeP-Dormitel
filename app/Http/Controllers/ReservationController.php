@@ -139,7 +139,7 @@ class ReservationController extends Controller
 
       return redirect('admin/dashboard');
     } else {
-      return "no can do!";
+      return "no can do!"; //TO DO improve
     }
   }
 
