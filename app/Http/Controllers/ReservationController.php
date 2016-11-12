@@ -255,7 +255,7 @@ class ReservationController extends Controller
 
     }
 
-    Excel::create('New file', function($excel) use ($all_data, $total_earnings, $reservations){
+    Excel::create('Earnings_Overview_' . Carbon::now()->toDateString(), function($excel) use ($all_data, $total_earnings, $reservations){
 
       $excel->sheet('New sheet', function($sheet) use ($all_data, $total_earnings, $reservations){
 
