@@ -16,34 +16,35 @@
 					</thead>
 					<tbody>
 
-					@foreach($all_data as $datum)
+						@foreach($all_data as $datum)
 						<tr>
-							<td>{{ $datum['person'] }}</td>
+							<td>{!! $datum["person"] !!}</td>
 							<td>{{ $datum['days'] }}</td>
 							<td>Php {{ $datum['total_price'] }}.00</td>
 						</tr>
-					@endforeach
-				</tbody>
-			</table>
-		</p><?php echo $reservations->render();?>
+						@endforeach
+					</tbody>
+				</table>
+			</p><?php echo $reservations->render();?>
 			<!-- Total -->
-		<h3>Current Total Earning Estimate</h3>
-		<table class="table table-bordered">
-					<thead>
-		       				<!-- Footer -->
-							 <tfoot>
-							    <tr>
-							      <th>Estimated Total Sum:</th>
-							      <th style="color:green;">Php {{ $t_e }}.00</th>
-							    </tr>
-							  </tfoot>
-							  <!-- End Footer -->
-					</thead>
+			<h3>Current Total Earning Estimate</h3>
+			<table class="table table-bordered">
+				<thead>
+					<!-- Footer -->
+					<tfoot>
+						<tr>
+							<th>Estimated Total Sum:</th>
+							<th style="color:green;">Php {{ $total_earnings }}.00</th>
+						</tr>
+					</tfoot>
+					<!-- End Footer -->
+				</thead>
 			</table>
 			<!-- Total -->
+		</div>
+		<a href="#menu-toggle" class="btn btn-default" id="menu-toggle" style="margin-left:15px;">Hide Menu</a>
+		<a href="{!! action('ReservationController@download') !!}" class="btn btn-default" style="margin-left:15px;">Download</a>
 	</div>
-	<a href="#menu-toggle" class="btn btn-default" id="menu-toggle" style="margin-left:15px;">Hide Menu</a>
-</div>
 </div>
 </div>
 @stop

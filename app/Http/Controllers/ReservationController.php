@@ -41,14 +41,14 @@ class ReservationController extends Controller
 
     switch ($type) {
       case Room::TYPE_AFFORDABLE:
-        $title = 'Small Room';
-        break;
+      $title = 'Small Room';
+      break;
       case Room::TYPE_MIDDLE_CLASS:
-        $title = 'Big Class Room';
-        break;
+      $title = 'Big Class Room';
+      break;
       case Room::TYPE_VIP:
-        $title = 'V.I.P';
-        break;
+      $title = 'V.I.P';
+      break;
     }
 
     return view('reservations.create')->with('title', $title)->with('room_id', $room_id);
@@ -72,17 +72,17 @@ class ReservationController extends Controller
     $currentOccupants   = [];
     $rooms              = Room::all();
     $reservations_count = Reservation::where('room_id', $input['room_id'])
-      ->where('status', 'accepted')
-      ->where('start_date', '<=', [$input['start_date']])
-      ->where('end_date', '>=', [$input['end_date']])->count();
+    ->where('status', 'accepted')
+    ->where('start_date', '<=', [$input['start_date']])
+    ->where('end_date', '>=', [$input['end_date']])->count();
 
     $room = Room::find($input['room_id']);
 
     foreach ($rooms as $index => $roomz) {
       $currentOccupants[$index] = Reservation::where('room_id', $roomz->id)
-        ->where('status', 'accepted')
-        ->where('start_date', '<=', [$input['start_date']])
-        ->where('end_date', '>=', [$input['end_date']])->count();
+      ->where('status', 'accepted')
+      ->where('start_date', '<=', [$input['start_date']])
+      ->where('end_date', '>=', [$input['end_date']])->count();
     }
     $all_table = Room::where('availability', 'vacant')->get();
     if ($reservations_count == $room->pax) {
@@ -188,6 +188,7 @@ class ReservationController extends Controller
     $reservations = Reservation::where('status', Reservation::STATUS_ACCEPTED)->paginate(10);
 
     $data = [];
+    $all_data = array();
 
     foreach ($reservations as $reservation) {
 
@@ -200,14 +201,69 @@ class ReservationController extends Controller
 
       $total_price = (int)$days * (float)$reservation->price;
 
-      $all_data[] = [
+      $all_data[] = array(
         'person'      => $reservation->person->first_name . ' ' . $reservation->person->last_name,
         'days'        => $days,
         'total_price' => $total_price,
-      ];
+        );
+
+    }
+    // dd($all_data);
+    return view('admin.summary')->with(compact('all_data', 'reservations', 'total_earnings'));
+  }
+
+  public function download()
+  {
+    $reservations = Reservation::where('status', Reservation::STATUS_ACCEPTED)->get();
+
+    $total_earnings = 0;
+
+    foreach ($reservations as $reservation) {
+
+      $days = new Carbon($reservation->start_date);
+      $days = $days->diffInDays(new Carbon($reservation->end_date));
+
+      if ($days == 0) {
+        $days = 1;
+      }
+
+      $total_price = (int)$days * (float)$reservation->price;
+      $total_earnings += $total_price;
+    }
+
+    $reservations = Reservation::where('status', Reservation::STATUS_ACCEPTED)->paginate(10);
+
+    $data = [];
+    $all_data = array();
+
+    foreach ($reservations as $reservation) {
+
+      $days = new Carbon($reservation->start_date);
+      $days = $days->diffInDays(new Carbon($reservation->end_date));
+
+      if ($days == 0) {
+        $days = 1;
+      }
+
+      $total_price = (int)$days * (float)$reservation->price;
+
+      $all_data[] = array(
+        'person'      => $reservation->person->first_name . ' ' . $reservation->person->last_name,
+        'days'        => $days,
+        'total_price' => $total_price,
+        );
 
     }
 
-    return view('admin.summary')->with('all_data', $all_data)->with('reservations', $reservations)->with('t_e', $total_earnings);
+    Excel::create('New file', function($excel) use ($all_data, $total_earnings, $reservations){
+
+      $excel->sheet('New sheet', function($sheet) use ($all_data, $total_earnings, $reservations){
+
+        $sheet->loadView('excel.template')->with(compact('all_data', 'reservations', 'total_earnings'));
+
+      });
+
+    })->download('xls');;
+
   }
 }

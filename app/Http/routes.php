@@ -31,6 +31,7 @@ Route::get('admin/dashboard/confirmed', 'AdminController@confirmed');
 Route::get('admin/dashboard/cancelled', 'AdminController@cancelled');
 Route::get('admin/dashboard/finished', 'AdminController@finished');
 Route::get('admin/dashboard/export', 'AdminController@getExcelFile');
+Route::get('admin/dashboard/download', 'ReservationController@download');
 
 /**
  * Room routes
