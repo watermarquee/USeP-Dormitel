@@ -51,4 +51,8 @@ class AdminController extends Controller {
   public function addmins() {
     return view('admin.adminindex');
   }
+
+  public function register() {
+    return view('auth.register');
+  }
 }
