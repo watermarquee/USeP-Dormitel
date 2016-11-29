@@ -45,7 +45,6 @@ class AdminController extends Controller {
     return view('admin.finished')->with(compact('reservations'));
   }
   public function addmins() {
-
     return view('admin.adminindex');
   }
 }

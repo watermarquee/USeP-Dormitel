@@ -40,6 +40,9 @@
                 </a>
             </li>
             <li>
+                <a href="/admin/dashboard/addmins">Add New Administrator</a>
+            </li>
+            <li>
                 <a href="{{ action('AdminController@index') }}">Latest Reservations Entered</a>
             </li>
             <li>

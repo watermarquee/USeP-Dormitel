@@ -88,6 +88,7 @@
     Conditions
 </div>
 
+@yield('foot-two')
 
 <script type="text/javascript">
     //Script for Parallax
