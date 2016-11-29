@@ -23,27 +23,31 @@ class AdminController extends Controller {
    *
    * @return Response
    */
-  public function index() 
+  public function index()
   {
     $reservations = Reservation::where('status', 'pending')->paginate(15);
 
     return view('admin.latest')->with(compact('reservations'));
   }
+
   public function confirmed() {
     $reservations = Reservation::where('status', 'accepted')->paginate(10);
 
     return view('admin.confirmed')->with(compact('reservations'));
   }
-   public function cancelled() {
+
+  public function cancelled() {
     $reservations = Reservation::where('status', 'cancelled')->paginate(10);
 
     return view('admin.cancelled')->with(compact('reservations'));
   }
+
   public function finished() {
     $reservations = Reservation::where('status', 'done')->paginate(10);
 
     return view('admin.finished')->with(compact('reservations'));
   }
+
   public function addmins() {
     return view('admin.adminindex');
   }

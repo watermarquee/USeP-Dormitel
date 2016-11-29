@@ -1,12 +1,8 @@
 @extends('master')
 @section('foot-two')
     <h3 align="center" style="margin-top:120px;">Add New Administrator</h3>
-    <div class="container" style="        
-                margin-left: 150px;
-                ">
-
-        <form id="eventForm" class="form-horizontal" style="
-                 margin-top: 50px">
+    <div class="container" style="margin-left: 150px;">
+        <form id="eventForm" class="form-horizontal" style="margin-top: 50px">
             <!--Start-->
             <style type="text/css">
                 /**
@@ -14,15 +10,12 @@
                  * See http://formvalidation.io/examples/adjusting-feedback-icon-position/
                  */
                 #eventForm .dateContainer .form-control-feedback {
-                    top: 0;
-                    right: -15px;
+                  top: 0;
+                  right: -15px;
                 }
-                .footer-content {
-
+                form {
+                  margin: 0 auto;
                 }
-                form { 
-                        margin: 0 auto; 
-                        }
             </style>
             <div class="form-group">
                 <label class="col-xs-3 control-label"></label>
@@ -59,54 +52,54 @@
                 <div class="col-xs-5 col-xs-offset-3">
                     <button type="submit" class="btn btn-danger" style="border-radius:0px;">Submit</button>
                     <span></span>
-                    <a href="/rooms">
+                    <a href="/admin/dashboard">
                         <button type="button" class="btn btn-default" style="border-radius:0px;">Cancel</button>
                     </a>
                 </div>
             </div>
         </form>
         <!--End-->
-        <script type="text/javascript">
-            //Start for DateScript
-            $(document).ready(function () {
-                $('#eventForm')
-                        .formValidation({
-                            framework: 'bootstrap',
-                            icon: {
-                                valid: 'glyphicon glyphicon-ok',
-                                invalid: 'glyphicon glyphicon-remove',
-                                validating: 'glyphicon glyphicon-refresh'
-                            },
-                            fields: {
-                                name: {
-                                    validators: {
-                                        notEmpty: {
-                                            message: 'A Name is required'
-                                        }
-                                    }
-                                },
-                                email: {
-                                    validators: {
-                                        notEmpty: {
-                                            message: 'e-Mail is required'
-                                        }
-                                    }
-                                },
-                                password: {
-                                    validators: {
-                                        notEmpty: {
-                                            message: 'A password is required'
-                                        }
-                                    }
-                                },
-                                password: {
-                                    validators: {
-                                        notEmpty: {
-                                            message: 'A confirmation password is required'
-                                        }
-                                    }
-                                },
-                        })
-            });//End Script
-        </script>
+<script type="text/javascript">
+//Start for DateScript
+$(document).ready(function () {
+  $('#eventForm')
+    .formValidation({
+    framework: 'bootstrap',
+      icon: {
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+      },
+      fields: {
+        name: {
+          validators: {
+            notEmpty: {
+              message: 'A Name is required'
+            }
+          }
+        },
+        email: {
+          validators: {
+            notEmpty: {
+              message: 'e-Mail is required'
+            }
+          }
+        },
+        password: {
+          validators: {
+            notEmpty: {
+              message: 'A password is required'
+            }
+          }
+        },
+        confirm_password: {
+          validators: {
+            notEmpty: {
+              message: 'A confirmation password is required'
+            }
+          }
+        },
+      }
+    });//End Script
+</script>
 @stop

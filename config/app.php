@@ -194,11 +194,9 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-		'Form' 		=> 'Collective\Html\FormFacade',
-    	'Html' 		=> 'Collective\Html\HtmlFacade',
-    	'Excel'     => 'Maatwebsite\Excel\Facades\Excel',
-
-
-	],
+		'Form' 		  => 'Collective\Html\FormFacade',
+    'Html' 		  => 'Collective\Html\HtmlFacade',
+    'Excel'     => 'Maatwebsite\Excel\Facades\Excel',
+  ],
 
 ];
