@@ -50,8 +50,13 @@ class AdminController extends Controller {
     return view('admin.finished')->with(compact('reservations'));
   }
 
-  public function addmins() {
-    return view('admin.adminindex');
+  /**
+   * Render user registration form
+   *
+   * @return view
+   */
+  public function register() {
+    return view('admin.register');
   }
 
   /**
