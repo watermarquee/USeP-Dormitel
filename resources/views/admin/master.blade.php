@@ -40,6 +40,9 @@
                 </a>
             </li>
             <li>
+                <a href="{{ action('AdminController@admins') }}">Administrators</a>
+            </li>
+            <li>
                 <a href="{{ action('AdminController@register') }}">Add New Administrator</a>
             </li>
             <li>

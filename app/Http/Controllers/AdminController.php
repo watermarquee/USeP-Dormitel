@@ -7,6 +7,7 @@ use Excel;
 use Illuminate\Http\Request;
 use App\User;
 use Hash;
+use DB;
 
 class AdminController extends Controller {
 
@@ -50,6 +51,18 @@ class AdminController extends Controller {
     return view('admin.finished')->with(compact('reservations'));
   }
 
+  public function admins() {
+    $admins = DB::table('users')->paginate(10);
+
+    return view('admin.admins')->with(compact('admins'));
+  }
+
+  public function destroy($id) {
+    $admin = DB::table('users')->find($id);
+    $admin->delete(); 
+    return redirect('/admin/dashboard');
+  }
+
   /**
    * Render user registration form
    *
@@ -78,9 +91,10 @@ class AdminController extends Controller {
 
     if(!$user->save()) {
       // TODO: render error page
+      return 'ERROR';
     }
 
     // TODO: add success message
-    return redirect('/admin/dashboard');
+    return view('success.success');
   }
 }

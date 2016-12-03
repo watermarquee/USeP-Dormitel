@@ -34,7 +34,10 @@ Route::get('admin/dashboard/export', 'AdminController@getExcelFile');
 Route::get('admin/dashboard/download', 'ReservationController@download');
 Route::get('admin/dashboard/register', 'AdminController@register');
 Route::post('admin/dashboard/register', 'AdminController@postRegister');
-
+Route::get('admin/dashboard/admins', 'AdminController@admins');
+Route::delete('admin/dashboard/admins/{id}', [
+	'as' => 'admin.delete',
+	'uses' => 'AdminController@destroy']);
 /**
  * Room routes
  */
