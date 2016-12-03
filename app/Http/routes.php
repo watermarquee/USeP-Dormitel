@@ -33,6 +33,7 @@ Route::get('admin/dashboard/finished', 'AdminController@finished');
 Route::get('admin/dashboard/export', 'AdminController@getExcelFile');
 Route::get('admin/dashboard/download', 'ReservationController@download');
 Route::get('admin/dashboard/register', 'AdminController@register');
+Route::post('admin/dashboard/register', 'AdminController@postRegister');
 
 /**
  * Room routes

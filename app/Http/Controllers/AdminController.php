@@ -5,6 +5,8 @@ use App\Reservation;
 use App\Http\Controllers\Controller;
 use Excel;
 use Illuminate\Http\Request;
+use App\User;
+use Hash;
 
 class AdminController extends Controller {
 
@@ -52,7 +54,28 @@ class AdminController extends Controller {
     return view('admin.adminindex');
   }
 
-  public function register() {
-    return view('auth.register');
+  /**
+   * Register user
+   *
+   * @return {{Any}}
+   */
+  public function postRegister(Request $request)
+  {
+    // TODO; check if user is authorized to create another user
+
+    // TODO: check if passwords match
+
+    // Create new user
+    $user = new User();
+    $user->name = $request->input('name');
+    $user->email = $request->input('email');
+    $user->password = Hash::make($request->input('password'));
+
+    if(!$user->save()) {
+      // TODO: render error page
+    }
+
+    // TODO: add success message
+    return redirect('/admin/dashboard');
   }
 }
