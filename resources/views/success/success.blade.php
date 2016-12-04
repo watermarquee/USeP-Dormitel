@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>DONE!</title>
-    </head>
-	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-       
+@extends('admin.master')
+@section('content') 
+
         <style type="text/css">
             
             html, body {
@@ -43,8 +38,6 @@
 
         </style>
 
-    <body>       
-
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
@@ -79,5 +72,5 @@
 		    $('#myModal').modal();
 		}, 1);
 		</script>
-    </body>
-</html>
+
+@stop

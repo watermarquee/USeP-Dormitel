@@ -13,6 +13,7 @@
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" media="screen"
           href="/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
     <link href="/css/simple-sidebar.css" rel="stylesheet">

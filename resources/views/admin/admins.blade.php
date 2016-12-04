@@ -21,7 +21,8 @@
 							<td>{{ $admin->email }}</td>
 							<td>
 								{!! Form::open(['method'=>'DELETE', 'route'=>['admin.delete',$admin->id]]) !!}
-				                    <button data-toggle="tooltip" data-placement="top" title="Delete" type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete this item?');">DELETE</button>
+								<input name="_token" type="hidden" value="{!! csrf_token() !!}" />
+				                <button data-toggle="tooltip" data-placement="top" title="Delete" type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete this item?');">DELETE</button>
 				                {!! Form::close() !!}
 							</td>
 						</tr>

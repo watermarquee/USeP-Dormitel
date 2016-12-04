@@ -58,8 +58,7 @@ class AdminController extends Controller {
   }
 
   public function destroy($id) {
-    $admin = DB::table('users')->find($id);
-    $admin->delete(); 
+    $admin = DB::table('users')->where('id', $id)->delete();
     return redirect('/admin/dashboard');
   }
 
