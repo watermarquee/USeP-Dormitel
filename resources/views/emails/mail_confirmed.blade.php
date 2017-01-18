@@ -1,6 +1,6 @@
 <div class="mail">
 	<h1>You reservation is confirmed!</h1>
-	<h2>Detais</h2>
+	<h2>Details</h2>
 	<div>Reservation ID: {{ $reservation->person->getUNiqueID() }}</div>
 	<div>Name: {{ $reservation->person->getFullName() }}</div>
 	<div>Address: {{ $reservation->person->address }}</div>
