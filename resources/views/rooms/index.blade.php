@@ -25,11 +25,8 @@
                          style="width:150px;height:150px;border:0;"></td>
                 <td><h1>Small Room</h1>
 
-                    <p style="text-align:justify;text-justify:inter-word">Lorem ipsum dolor sit
-                        amet, consectetur adipisicing elit. Laboriosam consectetur,
-                        tempore vel aperiam ab iure id, officia mollitia nesciunt quisquam, dolore
-                        doloremque. Possimus consequuntur
-                        delectus facilis perspiciatis minima, repellat recusandae?</p>
+                    <p style="text-align:justify;text-justify:inter-word">Beautiful Small Room with a max capacity
+                    of five(5) persons; four(4) small rooms available.</p>
                 </td>
                 <td><img src="/images/affordable2.jpg" vspace="22px"
                          style="width:150px;height:150px;border:0;"></td>
@@ -40,11 +37,8 @@
                          style="width:150px;height:150px;border:0;"></td>
                 <td><h1>Big Room</h1>
 
-                    <p style="text-align:justify;text-justify:inter-word">Lorem ipsum dolor sit
-                        amet, consectetur adipisicing elit. Laboriosam consectetur,
-                        tempore vel aperiam ab iure id, officia mollitia nesciunt quisquam, dolore
-                        doloremque. Possimus consequuntur
-                        delectus facilis perspiciatis minima, repellat recusandae?</p>
+                    <p style="text-align:justify;text-justify:inter-word">Beautiful Big Room with a max capacity
+                    of ten(10) persons; eight(8) big rooms available.</p>
                 </td>
                 <td><img src="/images/middleclass2.jpg" vspace="22px"
                          style="width:150px;height:150px;border:0;"></td>
@@ -55,11 +49,8 @@
                          style="width:150px;height:150px;border:0;"></td>
                 <td><h1>V.I.P.</h1>
 
-                    <p style="text-align:justify;text-justify:inter-word">Lorem ipsum dolor sit
-                        amet, consectetur adipisicing elit. Laboriosam consectetur,
-                        tempore vel aperiam ab iure id, officia mollitia nesciunt quisquam, dolore
-                        doloremque. Possimus consequuntur
-                        delectus facilis perspiciatis minima, repellat recusandae?</p>
+                    <p style="text-align:justify;text-justify:inter-word">A beautiful room and only one of its
+                    kind, reserved for people of high regards, max capacity of two(2) persons.</p>
                 </td>
                 <td>
                     <img src="/images/vip2.jpg" vspace="22px"
